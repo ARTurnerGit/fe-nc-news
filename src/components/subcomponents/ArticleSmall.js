@@ -5,7 +5,11 @@ class ArticleSmall extends React.Component {
   render() {
     return (
       <div>
-        <p>Hi, I'm a small article about {this.props.topic}</p>
+        <p>
+          Hi, I'm a small article about {this.props.topic}, created on{" "}
+          {this.props.created_at} with {this.props.votes} votes and{" "}
+          {this.props.comment_count} comments
+        </p>
       </div>
     );
   }

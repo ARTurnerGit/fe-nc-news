@@ -19,8 +19,19 @@ class SortingButtons extends React.Component {
     }
   };
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (
+      prevState.sort_by !== this.state.sort_by ||
+      prevState.order !== this.state.order
+    ) {
+      this.props.updateQueries({
+        sort_by: this.state.sort_by,
+        order: this.state.order,
+      });
+    }
+  }
+
   render() {
-    console.log(this.state);
     return (
       <div>
         <p>SORT BY</p>

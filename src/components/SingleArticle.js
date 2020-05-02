@@ -20,7 +20,10 @@ class SingleArticle extends React.Component {
     return (
       <>
         <ArticleLarge {...this.state.article} />
-        <AddCommentForm />
+        <AddCommentForm
+          article_id={this.props.article_id}
+          username={this.props.username}
+        />
         {this.state.comments.map((comment) => {
           return <Comment key={comment.comment_id} {...comment} />;
         })}

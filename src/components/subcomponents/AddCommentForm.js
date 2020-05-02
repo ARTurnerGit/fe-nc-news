@@ -1,11 +1,27 @@
 import React from "react";
+import * as api from "../../api";
 
 class AddCommentForm extends React.Component {
-  state = { body: "" };
+  state = { body: "", article_id: "", username: "" };
+
+  componentDidMount() {
+    this.setState({
+      article_id: this.props.article_id,
+      username: this.props.username,
+    });
+  }
 
   submitComment = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    if (this.state.body.length === 0) {
+      alert("please enter text into the comment box");
+    } else {
+      api.postCommentByArticleId({
+        body: this.state.body,
+        article_id: this.state.article_id,
+        username: this.state.username,
+      });
+    }
   };
 
   changeCommentText = (e) => {
@@ -13,7 +29,6 @@ class AddCommentForm extends React.Component {
   };
 
   render() {
-    console.log(this.state.body);
     return (
       <div>
         <form action="">
@@ -24,7 +39,7 @@ class AddCommentForm extends React.Component {
             cols="30"
             rows="10"
             value={this.state.body}
-            placeholder="Comment on this"
+            placeholder={`Commenting as ${this.props.username}`}
           ></textarea>
           <button onClick={this.submitComment}>SUBMIT MY COMMENT</button>
         </form>

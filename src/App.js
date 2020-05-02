@@ -8,17 +8,21 @@ import Articles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
 
 class App extends React.Component {
-  state = {};
+  // hardcoded username for the time being
+  state = { username: "grumpy19" };
   render() {
     return (
       <div className="App">
         <Banner />
-        <UserDetails />
+        <UserDetails username={this.state.username} />
         <NavList />
         <Router>
-          <Articles path="/" />
-          <Articles path="/:topic_slug" />
-          <SingleArticle path="/:topic_slug/:article_id" />
+          <Articles path="/" username={this.state.username} />
+          <Articles path="/:topic_slug" username={this.state.username} />
+          <SingleArticle
+            path="/:topic_slug/:article_id"
+            username={this.state.username}
+          />
         </Router>
       </div>
     );

@@ -5,7 +5,13 @@ class Comment extends React.Component {
   render() {
     return (
       <div>
-        <p>THIS WILL BE A COMMENT</p>
+        <p>
+          I am comment {this.props.comment_id} by {this.props.author}. I was
+          created at {this.props.created_at} and I currently have{" "}
+          {this.props.votes} votes
+        </p>
+        <hr />
+        <p>{this.props.body}</p>
       </div>
     );
   }

@@ -5,7 +5,13 @@ class ArticleLarge extends React.Component {
   render() {
     return (
       <div>
-        <p>THIS WILL BE A LARGE ARTICLE</p>
+        <p>
+          This is article {this.props.article_id}, called {this.props.title},
+          about {this.props.topic}. Here is the body:
+        </p>
+        <hr />
+        <p>{this.props.body}</p>
+        <hr />
       </div>
     );
   }

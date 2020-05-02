@@ -10,6 +10,24 @@ export const getArticles = ({ sort_by, order, topic }) => {
     });
 };
 
+export const getArticleById = (article_id) => {
+  return axios
+    .get(`https://art-news-server.herokuapp.com/api/articles/${article_id}`)
+    .then(({ data: { article } }) => {
+      return article;
+    });
+};
+
+export const getCommentsByArticleId = (article_id) => {
+  return axios
+    .get(
+      `https://art-news-server.herokuapp.com/api/articles/${article_id}/comments`
+    )
+    .then(({ data: { comments } }) => {
+      return comments;
+    });
+};
+
 export const getTopics = () => {
   return axios
     .get("https://art-news-server.herokuapp.com/api/topics")

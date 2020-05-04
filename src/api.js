@@ -61,6 +61,15 @@ export const postCommentByArticleId = ({ article_id, username, body }) => {
     );
 };
 
+export const patchArticleByArticleId = ({ article_id, changeInVotes }) => {
+  return axios.patch(
+    `https://art-news-server.herokuapp.com/api/articles/${article_id}`,
+    {
+      inc_votes: changeInVotes,
+    }
+  );
+};
+
 export const deleteCommentByCommentId = (comment_id) => {
   return axios.delete(
     `https://art-news-server.herokuapp.com/api/comments/${comment_id}`

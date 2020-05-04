@@ -26,7 +26,13 @@ class SingleArticle extends React.Component {
           username={this.props.username}
         />
         {this.state.comments.map((comment) => {
-          return <Comment key={comment.comment_id} {...comment} />;
+          return (
+            <Comment
+              key={comment.comment_id}
+              {...comment}
+              username={this.props.username}
+            />
+          );
         })}
       </>
     );

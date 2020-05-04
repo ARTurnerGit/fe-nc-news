@@ -5,15 +5,7 @@ import { Link } from "@reach/router";
 class ArticleSmall extends React.Component {
   state = {};
   render() {
-    const {
-      author,
-      title,
-      article_id,
-      topic,
-      created_at,
-      votes,
-      comment_count,
-    } = this.props;
+    const { article_id, topic, created_at, votes, comment_count } = this.props;
     return (
       <div>
         <p>

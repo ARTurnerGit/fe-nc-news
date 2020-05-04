@@ -10,11 +10,15 @@ class AddCommentForm extends React.Component {
     if (this.state.body.length === 0) {
       alert("please enter text into the comment box");
     } else {
-      api.postCommentByArticleId({
-        body: this.state.body,
-        article_id: this.props.article_id,
-        username: this.props.username,
-      });
+      api
+        .postCommentByArticleId({
+          body: this.state.body,
+          article_id: this.props.article_id,
+          username: this.props.username,
+        })
+        .then((comment_id) => {
+          this.setState({ body: `Comment submitted with id: ${comment_id}` });
+        });
     }
   };
 

@@ -50,7 +50,19 @@ export const postCommentByArticleId = ({ article_id, username, body }) => {
       `https://art-news-server.herokuapp.com/api/articles/${article_id}/comments`,
       { username, body }
     )
-    .then((res) => {
-      console.log(res);
-    });
+    .then(
+      ({
+        data: {
+          comment: { comment_id },
+        },
+      }) => {
+        return comment_id;
+      }
+    );
+};
+
+export const deleteCommentByCommentId = (comment_id) => {
+  return axios.delete(
+    `https://art-news-server.herokuapp.com/api/comments/${comment_id}`
+  );
 };

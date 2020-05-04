@@ -1,10 +1,18 @@
 import React from "react";
+import DeleteButton from "./DeleteButton";
 
-//PROPS comment_id, votes, created_at, author, body (for the comment)
+//PROPS comment_id, votes, created_at, author, body (for the comment), username
 class Comment extends React.Component {
   state = {};
   render() {
-    const { comment_id, votes, created_at, author, body } = this.props;
+    const {
+      comment_id,
+      votes,
+      created_at,
+      author,
+      body,
+      username,
+    } = this.props;
     return (
       <div>
         <p>
@@ -13,6 +21,11 @@ class Comment extends React.Component {
         </p>
         <hr />
         <p>{body}</p>
+        <DeleteButton
+          author={author}
+          username={username}
+          comment_id={comment_id}
+        />
       </div>
     );
   }

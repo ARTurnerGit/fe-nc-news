@@ -4,15 +4,7 @@ import React from "react";
 class ArticleLarge extends React.Component {
   state = {};
   render() {
-    const {
-      author,
-      title,
-      article_id,
-      topic,
-      created_at,
-      votes,
-      comment_count,
-    } = this.props;
+    const { title, article_id, body, topic } = this.props;
     return (
       <div>
         <p>

@@ -48,7 +48,13 @@ class Articles extends React.Component {
       <section>
         <SortingButtons updateQueries={this.updateQueries} />
         {this.state.articles.map((article) => {
-          return <ArticleSmall key={article.article_id} {...article} />;
+          return (
+            <ArticleSmall
+              key={article.article_id}
+              username={this.props.username}
+              {...article}
+            />
+          );
         })}
       </section>
     );

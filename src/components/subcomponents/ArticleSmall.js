@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "@reach/router";
 import VotingButtons from "./VotingButtons";
 
-// PROPS: author, title, article_id, topic, created_at, votes, comment_count (all related to an article)
+// PROPS: author, title, article_id, topic, created_at, votes, comment_count (all related to an article), username
 class ArticleSmall extends React.Component {
   state = {};
 
@@ -16,7 +16,11 @@ class ArticleSmall extends React.Component {
           <Link to={`/${topic}`}>{topic}</Link>, created on {created_at} with{" "}
           {votes} votes and {comment_count} comments
         </p>
-        <VotingButtons votes={votes} article_id={article_id} />
+        <VotingButtons
+          votes={votes}
+          article_id={article_id}
+          username={this.props.username}
+        />
       </div>
     );
   }

@@ -3,7 +3,7 @@ import { Router } from "@reach/router";
 import "./App.css";
 import Banner from "./components/Banner";
 import UserDetails from "./components/UserDetails";
-import NavList from "./components/Navbar";
+import NavList from "./components/NavList";
 import Articles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
 

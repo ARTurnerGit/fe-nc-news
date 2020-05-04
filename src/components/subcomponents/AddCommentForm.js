@@ -1,15 +1,9 @@
 import React from "react";
 import * as api from "../../api";
 
+// PROPS article_id, username
 class AddCommentForm extends React.Component {
-  state = { body: "", article_id: "", username: "" };
-
-  componentDidMount() {
-    this.setState({
-      article_id: this.props.article_id,
-      username: this.props.username,
-    });
-  }
+  state = { body: "" };
 
   submitComment = (e) => {
     e.preventDefault();
@@ -18,8 +12,8 @@ class AddCommentForm extends React.Component {
     } else {
       api.postCommentByArticleId({
         body: this.state.body,
-        article_id: this.state.article_id,
-        username: this.state.username,
+        article_id: this.props.article_id,
+        username: this.props.username,
       });
     }
   };

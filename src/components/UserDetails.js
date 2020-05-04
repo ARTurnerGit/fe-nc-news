@@ -1,12 +1,13 @@
 import React from "react";
 import * as api from "../api";
 
+// PROPS: username
 class UserDetails extends React.Component {
-  state = { username: "", avatar_url: "", name: "" };
+  state = { name: "", avatar_url: "" };
 
   componentDidMount() {
-    api.getUserByUsername(this.props.username).then((user) => {
-      this.setState({ ...user });
+    api.getUserByUsername(this.props.username).then(({ name, avatar_url }) => {
+      this.setState({ name, avatar_url });
     });
   }
 

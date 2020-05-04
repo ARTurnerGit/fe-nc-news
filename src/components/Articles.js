@@ -3,29 +3,17 @@ import * as api from "../api";
 import ArticleSmall from "./subcomponents/ArticleSmall";
 import SortingButtons from "./subcomponents/SortingButtons";
 
+// PROPS: username, topic_slug
 class Articles extends React.Component {
   state = {
     articles: [],
     sort_by: "created_at",
     order: "desc",
-    topic: "",
   };
 
   componentDidMount() {
-    api
-      .getArticles({
-        sort_by: this.state.sort_by,
-        order: this.state.order,
-        topic: this.props.topic_slug,
-      })
-      .then((articles) => {
-        this.setState({ articles, topic: this.props.topic_slug });
-      });
+    this.requestArticlesAndSetState();
   }
-
-  updateQueries = ({ sort_by, order }) => {
-    this.setState({ sort_by, order });
-  };
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (
@@ -33,17 +21,27 @@ class Articles extends React.Component {
       prevState.order !== this.state.order ||
       prevProps.topic_slug !== this.props.topic_slug
     ) {
-      api
-        .getArticles({
-          sort_by: this.state.sort_by,
-          order: this.state.order,
-          topic: this.props.topic_slug,
-        })
-        .then((articles) => {
-          this.setState({ articles, topic: this.props.topic_slug });
-        });
+      this.requestArticlesAndSetState();
     }
   }
+
+  requestArticlesAndSetState() {
+    const { sort_by, order } = this.state;
+    const { topic_slug: topic } = this.props;
+    api
+      .getArticles({
+        sort_by,
+        order,
+        topic,
+      })
+      .then((articles) => {
+        this.setState({ articles });
+      });
+  }
+
+  updateQueries = ({ sort_by, order }) => {
+    this.setState({ sort_by, order });
+  };
 
   render() {
     return (

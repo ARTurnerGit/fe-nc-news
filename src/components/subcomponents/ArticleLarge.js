@@ -1,16 +1,26 @@
 import React from "react";
 
+// PROPS: author, title, article_id, body, topic, created_at, votes, comment_count (for the article)
 class ArticleLarge extends React.Component {
   state = {};
   render() {
+    const {
+      author,
+      title,
+      article_id,
+      topic,
+      created_at,
+      votes,
+      comment_count,
+    } = this.props;
     return (
       <div>
         <p>
-          This is article {this.props.article_id}, called {this.props.title},
-          about {this.props.topic}. Here is the body:
+          This is article {article_id}, called {title}, about {topic}. Here is
+          the body:
         </p>
         <hr />
-        <p>{this.props.body}</p>
+        <p>{body}</p>
         <hr />
       </div>
     );

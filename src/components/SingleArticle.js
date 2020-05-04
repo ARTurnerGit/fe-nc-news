@@ -4,6 +4,7 @@ import ArticleLarge from "./subcomponents/ArticleLarge";
 import Comment from "./subcomponents/Comment";
 import AddCommentForm from "./subcomponents/AddCommentForm";
 
+// PROPS: topic_slug, article_id, username
 class SingleArticle extends React.Component {
   state = { article: {}, comments: [] };
 

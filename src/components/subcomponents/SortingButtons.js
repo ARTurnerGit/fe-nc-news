@@ -1,20 +1,20 @@
 import React from "react";
 
+// PROPS: updateQueries
 class SortingButtons extends React.Component {
-  state = { sort_by: "created_at", order: "desc", isDescending: true };
+  state = { sort_by: "created_at", order: "desc" };
 
   updateState = (e) => {
-    if (e.target.name === this.state.sort_by) {
-      if (this.state.isDescending) {
-        this.setState({ order: "asc", isDescending: false });
-      } else {
-        this.setState({ order: "desc", isDescending: true });
-      }
-    } else {
+    const newSortField = e.target.name;
+    if (newSortField !== this.state.sort_by) {
       this.setState({
-        sort_by: e.target.name,
+        sort_by: newSortField,
         order: "desc",
-        isDescending: true,
+      });
+    } else {
+      this.setState((currentState) => {
+        const newOrder = currentState.order === "asc" ? "desc" : "asc";
+        return { order: newOrder };
       });
     }
   };

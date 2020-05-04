@@ -60,7 +60,7 @@ You should implement the following functionality in your website. Check the lect
 
 [] show a 404 error if I go on a non-existent path/a path for a non-existent article/topic.
 [] show a 400 error if I go on a invalid article ID.
-[] not be allowed to post a comment if I have not filled in all of the form boxes.
+[x] not be allowed to post a comment if I have not filled in all of the form boxes.
 
 ## _If time, and if you have implemented it in your back-end API..._
 

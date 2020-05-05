@@ -1,23 +1,33 @@
 import React from "react";
 import * as api from "../../api";
+import ErrorMessage from "./ErrorMessage";
 
-// PROPS: author, username, comment_id
+// PROPS: author, username, comment_id, requestCommentsByArticleId
 class DeleteButton extends React.Component {
-  state = {};
+  state = { err: "" };
   requestCommentDeletion = (e) => {
-    api.deleteCommentByCommentId(this.props.comment_id).catch((err) => {
-      console.dir(err);
-      alert("There was a problem deleting this comment");
-    });
+    api
+      .deleteCommentByCommentId(this.props.comment_id)
+      .then(() => {
+        this.props.requestCommentsByArticleId();
+      })
+      .catch((err) => {
+        console.dir(err);
+        this.setState({ err: "there was a problem deleting this comment" });
+      });
   };
   render() {
-    return (
-      this.props.author === this.props.username && (
-        <button onClick={this.requestCommentDeletion}>
-          DELETE THIS COMMENT
-        </button>
-      )
-    );
+    if (this.state.err.length !== 0) {
+      return <ErrorMessage err={this.state.err} />;
+    } else {
+      return (
+        this.props.author === this.props.username && (
+          <button onClick={this.requestCommentDeletion}>
+            DELETE THIS COMMENT
+          </button>
+        )
+      );
+    }
   }
 }
 

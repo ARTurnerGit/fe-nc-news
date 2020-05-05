@@ -1,3 +1,7 @@
+/* * {
+  border: 0.5px solid red;
+} */
+
 @media screen and (max-width: 450px) {
   .App {
     display: grid;
@@ -25,15 +29,28 @@
 .App {
   display: grid;
   grid-template-columns: 4fr 1fr;
-  grid-template-rows: 10vh auto;
+  grid-template-rows: 15vh auto;
   grid-template-areas: "banner banner" "main nav";
 }
 
 .banner__container {
   grid-area: banner;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .banner__title {
-  display: inline;
+  font-size: 10vh;
+}
+.banner__end {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 12vh;
+  width: 12vh;
+  border: 2px solid black;
+  border-radius: 10px;
 }
 .banner__username {
 }

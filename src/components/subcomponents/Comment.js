@@ -2,7 +2,7 @@ import React from "react";
 import DeleteButton from "./DeleteButton";
 import VotingButtons from "./VotingButtons";
 
-//PROPS comment_id, votes, created_at, author, body (for the comment), username
+//PROPS comment_id, votes, created_at, author, body (for the comment), username, requestCommentsByArticleId
 class Comment extends React.Component {
   state = {};
   render() {
@@ -31,6 +31,7 @@ class Comment extends React.Component {
           author={author}
           username={username}
           comment_id={comment_id}
+          requestCommentsByArticleId={this.props.requestCommentsByArticleId}
         />
       </div>
     );

@@ -8,26 +8,39 @@ import VotingButtons from "./subcomponents/VotingButtons";
 
 // PROPS: topic_slug, article_id, username
 class SingleArticle extends React.Component {
-  state = { article: {}, comments: [], isLoading: true, err: "" };
+  state = { article: {}, comments: [], isLoading: true, ArticleErr: "" };
 
   componentDidMount() {
-    api
+    this.requestArticleById();
+    this.requestCommentsByArticleId();
+  }
+
+  requestArticleById = () => {
+    return api
       .getArticleById(this.props.article_id)
       .then((article) => {
-        this.setState({ article, isLoading: false, err: "" });
+        this.setState({ article, isLoading: false, ArticleErr: "" });
       })
-      .catch((err) => {
-        this.setState({ isLoading: false, err: err.response.data.msg });
+      .catch((ArticleErr) => {
+        this.setState({
+          isLoading: false,
+          ArticleErr: ArticleErr.response.data.msg,
+        });
       });
+  };
 
-    api.getCommentsByArticleId(this.props.article_id).then((comments) => {
-      this.setState({ comments });
-    });
-  }
+  requestCommentsByArticleId = () => {
+    return api
+      .getCommentsByArticleId(this.props.article_id)
+      .then((comments) => {
+        this.setState({ comments });
+      });
+  };
 
   render() {
     if (this.state.isLoading === true) return <LoadingMessage />;
-    else if (this.state.err.length !== 0) return <h3>{this.state.err}</h3>;
+    else if (this.state.ArticleErr.length !== 0)
+      return <h3>{this.state.ArticleErr}</h3>;
     else
       return (
         <>
@@ -43,6 +56,7 @@ class SingleArticle extends React.Component {
             <AddCommentForm
               article_id={this.props.article_id}
               username={this.props.username}
+              requestCommentsByArticleId={this.requestCommentsByArticleId}
             />
           </section>
           <section className="main__comments">
@@ -53,6 +67,7 @@ class SingleArticle extends React.Component {
                   key={comment.comment_id}
                   {...comment}
                   username={this.props.username}
+                  requestCommentsByArticleId={this.requestCommentsByArticleId}
                 />
               );
             })}

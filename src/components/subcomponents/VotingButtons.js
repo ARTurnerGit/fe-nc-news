@@ -23,19 +23,16 @@ class VotingButtons extends React.Component {
     if (this.state.userVote === 0) {
       this.setState({ userVote: vote });
       this.requestVoteChange(vote).catch(() => {
-        alert("There was a problem voting, please try again later");
         this.setState({ userVote: 0 });
       });
     } else if (vote === this.state.userVote) {
       this.setState({ userVote: 0 });
       this.requestVoteChange(-vote).catch(() => {
-        alert("There was a problem voting, please try again later");
         this.setState({ userVote: vote });
       });
     } else {
       this.setState({ userVote: vote });
       this.requestVoteChange(2 * vote).catch(() => {
-        alert("There was a problem voting, please try again later");
         this.setState({ userVote: -vote });
       });
     }

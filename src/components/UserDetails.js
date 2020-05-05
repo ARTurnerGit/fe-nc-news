@@ -22,7 +22,7 @@ class UserDetails extends React.Component {
     else if (this.state.err.length !== 0) return <h3>User not found</h3>;
     else
       return (
-        <>
+        <div className="banner__end">
           <label className="banner__username">
             <img
               src={this.state.avatar_url}
@@ -31,7 +31,7 @@ class UserDetails extends React.Component {
             />
             {this.props.username}
           </label>
-        </>
+        </div>
       );
   }
 }

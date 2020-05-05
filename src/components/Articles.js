@@ -9,6 +9,7 @@ class Articles extends React.Component {
     articles: [],
     sort_by: "created_at",
     order: "desc",
+    err: "",
   };
 
   componentDidMount() {
@@ -35,7 +36,11 @@ class Articles extends React.Component {
         topic,
       })
       .then((articles) => {
-        this.setState({ articles });
+        this.setState({ articles, err: "" });
+      })
+      .catch((err) => {
+        console.dir(err);
+        this.setState({ err: err.response.data.msg });
       });
   }
 
@@ -44,20 +49,22 @@ class Articles extends React.Component {
   };
 
   render() {
-    return (
-      <section>
-        <SortingButtons updateQueries={this.updateQueries} />
-        {this.state.articles.map((article) => {
-          return (
-            <ArticleSmall
-              key={article.article_id}
-              username={this.props.username}
-              {...article}
-            />
-          );
-        })}
-      </section>
-    );
+    if (this.state.err.length !== 0) return <h3>{this.state.err}</h3>;
+    else
+      return (
+        <section>
+          <SortingButtons updateQueries={this.updateQueries} />
+          {this.state.articles.map((article) => {
+            return (
+              <ArticleSmall
+                key={article.article_id}
+                username={this.props.username}
+                {...article}
+              />
+            );
+          })}
+        </section>
+      );
   }
 }
 

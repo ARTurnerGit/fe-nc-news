@@ -1,5 +1,6 @@
 import React from "react";
 import DeleteButton from "./DeleteButton";
+import VotingButtons from "./VotingButtons";
 
 //PROPS comment_id, votes, created_at, author, body (for the comment), username
 class Comment extends React.Component {
@@ -21,6 +22,11 @@ class Comment extends React.Component {
         </p>
         <hr />
         <p>{body}</p>
+        <VotingButtons
+          votes={votes}
+          comment_id={comment_id}
+          username={username}
+        />
         <DeleteButton
           author={author}
           username={username}

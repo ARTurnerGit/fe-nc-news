@@ -70,6 +70,15 @@ export const patchArticleByArticleId = ({ article_id, changeInVotes }) => {
   );
 };
 
+export const patchCommentByCommentId = ({ comment_id, changeInVotes }) => {
+  return axios.patch(
+    `https://art-news-server.herokuapp.com/api/comments/${comment_id}`,
+    {
+      inc_votes: changeInVotes,
+    }
+  );
+};
+
 export const deleteCommentByCommentId = (comment_id) => {
   return axios.delete(
     `https://art-news-server.herokuapp.com/api/comments/${comment_id}`

@@ -46,7 +46,7 @@ You should implement the following functionality in your website. Check the lect
 [x] post a new comment to an existing article (as a default logged in user. e.g. jessjelly').
 [x] delete my own comments (as a default logged in user. e.g. 'jessjelly').
 [x] vote on an article and immediately see the change.
-[] vote on a comment and immediately see the change.
+[x] vote on a comment and immediately see the change.
 
 **As a hiring partner, I should be able to...**
 

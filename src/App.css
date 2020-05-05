@@ -1,3 +1,37 @@
+.banner__container {
+}
+.banner__title {
+}
+.banner__username {
+}
+.banner__userimage {
+}
+
+.nav__container {
+}
+.nav__list {
+}
+.nav__element {
+}
+
+.body__container {
+}
+.body__sorting {
+}
+.body__articles--small {
+}
+.body__articles--large {
+}
+.body__form {
+}
+.body__comments {
+}
+
+.article--small {
+}
+.comment--small {
+}
+
 .selected {
   background-color: green;
 }

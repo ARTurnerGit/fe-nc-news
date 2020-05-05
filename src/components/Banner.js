@@ -3,11 +3,11 @@ import { Link } from "@reach/router";
 
 function Banner() {
   return (
-    <header>
-      <h1>
-        <Link to="/">NC NEWS, THIS IS A LINK TO /</Link>
+    <>
+      <h1 className="banner__title">
+        <Link to="/">NC NEWS</Link>
       </h1>
-    </header>
+    </>
   );
 }
 

@@ -13,16 +13,22 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Banner />
-        <UserDetails username={this.state.username} />
-        <NavList />
+        <header className="banner__container">
+          <Banner />
+          <UserDetails username={this.state.username} />
+        </header>
+        <nav className="nav__container">
+          <NavList />
+        </nav>
         <Router>
-          <Articles path="/" username={this.state.username} />
-          <Articles path="/:topic_slug" username={this.state.username} />
-          <SingleArticle
-            path="/:topic_slug/:article_id"
-            username={this.state.username}
-          />
+          <body className="body__container">
+            <Articles path="/" username={this.state.username} />
+            <Articles path="/:topic_slug" username={this.state.username} />
+            <SingleArticle
+              path="/:topic_slug/:article_id"
+              username={this.state.username}
+            />
+          </body>
         </Router>
       </div>
     );

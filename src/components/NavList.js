@@ -13,17 +13,15 @@ class NavList extends React.Component {
 
   render() {
     return (
-      <nav>
-        <ul>
-          {this.state.topics.map((topic) => {
-            return (
-              <li key={topic.slug}>
-                <Link to={`/${topic.slug}`}>{topic.slug}</Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+      <ul className="nav__list">
+        {this.state.topics.map((topic) => {
+          return (
+            <li key={topic.slug} className="nav__element">
+              <Link to={`/${topic.slug}`}>{topic.slug}</Link>
+            </li>
+          );
+        })}
+      </ul>
     );
   }
 }

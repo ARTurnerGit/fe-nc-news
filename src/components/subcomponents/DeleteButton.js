@@ -5,7 +5,10 @@ import * as api from "../../api";
 class DeleteButton extends React.Component {
   state = {};
   requestCommentDeletion = (e) => {
-    api.deleteCommentByCommentId(this.props.comment_id);
+    api.deleteCommentByCommentId(this.props.comment_id).catch((err) => {
+      console.dir(err);
+      alert("There was a problem deleting this comment");
+    });
   };
   render() {
     return (

@@ -3,19 +3,20 @@ import * as api from "../api";
 import ArticleLarge from "./subcomponents/ArticleLarge";
 import Comment from "./subcomponents/Comment";
 import AddCommentForm from "./subcomponents/AddCommentForm";
+import LoadingMessage from "./subcomponents/LoadingMessage";
 
 // PROPS: topic_slug, article_id, username
 class SingleArticle extends React.Component {
-  state = { article: {}, comments: [], err: "" };
+  state = { article: {}, comments: [], isLoading: true, err: "" };
 
   componentDidMount() {
     api
       .getArticleById(this.props.article_id)
       .then((article) => {
-        this.setState({ article, err: "" });
+        this.setState({ article, isLoading: false, err: "" });
       })
       .catch((err) => {
-        this.setState({ err: err.response.data.msg });
+        this.setState({ isLoading: false, err: err.response.data.msg });
       });
 
     api.getCommentsByArticleId(this.props.article_id).then((comments) => {
@@ -24,24 +25,32 @@ class SingleArticle extends React.Component {
   }
 
   render() {
-    if (this.state.err.length !== 0) return <h3>{this.state.err}</h3>;
+    if (this.state.isLoading === true) return <LoadingMessage />;
+    else if (this.state.err.length !== 0) return <h3>{this.state.err}</h3>;
     else
       return (
         <>
-          <ArticleLarge {...this.state.article} />
-          <AddCommentForm
-            article_id={this.props.article_id}
-            username={this.props.username}
-          />
-          {this.state.comments.map((comment) => {
-            return (
-              <Comment
-                key={comment.comment_id}
-                {...comment}
-                username={this.props.username}
-              />
-            );
-          })}
+          <section className="body__article--large">
+            <ArticleLarge {...this.state.article} />
+          </section>
+          <section className="body__form">
+            <AddCommentForm
+              article_id={this.props.article_id}
+              username={this.props.username}
+            />
+          </section>
+          <section className="body__comments">
+            {this.state.comments.map((comment) => {
+              return (
+                <Comment
+                  className="comment--small"
+                  key={comment.comment_id}
+                  {...comment}
+                  username={this.props.username}
+                />
+              );
+            })}
+          </section>
         </>
       );
   }

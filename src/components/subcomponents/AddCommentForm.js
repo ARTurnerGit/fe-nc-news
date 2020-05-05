@@ -17,7 +17,14 @@ class AddCommentForm extends React.Component {
           username: this.props.username,
         })
         .then((comment_id) => {
-          this.setState({ body: `Comment submitted with id: ${comment_id}` });
+          this.setState({
+            body: `Comment submitted with id: ${comment_id}, please refresh to view`,
+          });
+        })
+        .catch(() => {
+          alert(
+            "There was a problem submitting your comment, please try again later"
+          );
         });
     }
   };

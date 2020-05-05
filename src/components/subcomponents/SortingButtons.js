@@ -44,6 +44,7 @@ class SortingButtons extends React.Component {
         <button onClick={this.updateState} name="votes">
           Votes
         </button>
+        Sorted {this.state.order}
       </div>
     );
   }

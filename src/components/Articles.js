@@ -2,6 +2,7 @@ import React from "react";
 import * as api from "../api";
 import ArticleSmall from "./subcomponents/ArticleSmall";
 import SortingButtons from "./subcomponents/SortingButtons";
+import LoadingMessage from "./subcomponents/LoadingMessage";
 
 // PROPS: username, topic_slug
 class Articles extends React.Component {
@@ -10,6 +11,7 @@ class Articles extends React.Component {
     sort_by: "created_at",
     order: "desc",
     err: "",
+    isLoading: true,
   };
 
   componentDidMount() {
@@ -36,11 +38,11 @@ class Articles extends React.Component {
         topic,
       })
       .then((articles) => {
-        this.setState({ articles, err: "" });
+        this.setState({ articles, isLoading: false, err: "" });
       })
       .catch((err) => {
         console.dir(err);
-        this.setState({ err: err.response.data.msg });
+        this.setState({ isLoading: false, err: err.response.data.msg });
       });
   }
 
@@ -49,21 +51,27 @@ class Articles extends React.Component {
   };
 
   render() {
-    if (this.state.err.length !== 0) return <h3>{this.state.err}</h3>;
+    if (this.state.isLoading === true) return <LoadingMessage />;
+    else if (this.state.err.length !== 0) return <h3>{this.state.err}</h3>;
     else
       return (
-        <section>
-          <SortingButtons updateQueries={this.updateQueries} />
-          {this.state.articles.map((article) => {
-            return (
-              <ArticleSmall
-                key={article.article_id}
-                username={this.props.username}
-                {...article}
-              />
-            );
-          })}
-        </section>
+        <>
+          <section className="body__sorting">
+            <SortingButtons updateQueries={this.updateQueries} />
+          </section>
+          <section className="body__articles--small">
+            {this.state.articles.map((article) => {
+              return (
+                <ArticleSmall
+                  className="article--small"
+                  key={article.article_id}
+                  username={this.props.username}
+                  {...article}
+                />
+              );
+            })}
+          </section>
+        </>
       );
   }
 }

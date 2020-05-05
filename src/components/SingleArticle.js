@@ -4,6 +4,7 @@ import ArticleLarge from "./subcomponents/ArticleLarge";
 import Comment from "./subcomponents/Comment";
 import AddCommentForm from "./subcomponents/AddCommentForm";
 import LoadingMessage from "./subcomponents/LoadingMessage";
+import VotingButtons from "./subcomponents/VotingButtons";
 
 // PROPS: topic_slug, article_id, username
 class SingleArticle extends React.Component {
@@ -34,6 +35,11 @@ class SingleArticle extends React.Component {
             <ArticleLarge {...this.state.article} />
           </section>
           <section className="main__form">
+            <VotingButtons
+              votes={this.state.article.votes}
+              article_id={this.state.article.article_id}
+              username={this.props.username}
+            />
             <AddCommentForm
               article_id={this.props.article_id}
               username={this.props.username}

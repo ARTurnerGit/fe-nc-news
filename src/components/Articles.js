@@ -56,10 +56,10 @@ class Articles extends React.Component {
     else
       return (
         <>
-          <section className="body__sorting">
+          <section className="main__sorting">
             <SortingButtons updateQueries={this.updateQueries} />
           </section>
-          <section className="body__articles--small">
+          <section className="main__articles--small">
             {this.state.articles.map((article) => {
               return (
                 <ArticleSmall

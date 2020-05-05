@@ -1,30 +1,42 @@
+.App {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 10vh auto;
+  grid-template-areas: "banner banner" "main nav";
+}
+
 .banner__container {
+  grid-area: banner;
 }
 .banner__title {
+  display: inline;
 }
 .banner__username {
 }
 .banner__userimage {
+  height: 6vh;
 }
 
 .nav__container {
+  grid-area: nav;
 }
 .nav__list {
 }
 .nav__element {
 }
 
-.body__container {
+.main__container {
+  grid-area: main;
 }
-.body__sorting {
+.main__sorting {
 }
-.body__articles--small {
+.main__articles--small {
 }
-.body__articles--large {
+.main__articles--large {
 }
-.body__form {
+.main__form {
 }
-.body__comments {
+.main__comments {
 }
 
 .article--small {

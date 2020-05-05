@@ -30,16 +30,16 @@ class SingleArticle extends React.Component {
     else
       return (
         <>
-          <section className="body__article--large">
+          <section className="main__article--large">
             <ArticleLarge {...this.state.article} />
           </section>
-          <section className="body__form">
+          <section className="main__form">
             <AddCommentForm
               article_id={this.props.article_id}
               username={this.props.username}
             />
           </section>
-          <section className="body__comments">
+          <section className="main__comments">
             {this.state.comments.map((comment) => {
               return (
                 <Comment

@@ -3,6 +3,7 @@ import * as api from "../api";
 import ArticleSmall from "./subcomponents/ArticleSmall";
 import SortingButtons from "./subcomponents/SortingButtons";
 import LoadingMessage from "./subcomponents/LoadingMessage";
+import ErrorMessage from "./subcomponents/ErrorMessage";
 
 // PROPS: username, topic_slug
 class Articles extends React.Component {
@@ -41,7 +42,6 @@ class Articles extends React.Component {
         this.setState({ articles, isLoading: false, err: "" });
       })
       .catch((err) => {
-        console.dir(err);
         this.setState({ isLoading: false, err: err.response.data.msg });
       });
   }
@@ -51,8 +51,9 @@ class Articles extends React.Component {
   };
 
   render() {
-    if (this.state.isLoading === true) return <LoadingMessage />;
-    else if (this.state.err.length !== 0) return <h3>{this.state.err}</h3>;
+    const { articles, err, isLoading } = this.state;
+    if (isLoading) return <LoadingMessage />;
+    else if (err.length !== 0) return <ErrorMessage err={err} />;
     else
       return (
         <>
@@ -60,7 +61,7 @@ class Articles extends React.Component {
             <SortingButtons updateQueries={this.updateQueries} />
           </section>
           <section className="main__articles--small">
-            {this.state.articles.map((article) => {
+            {articles.map((article) => {
               return (
                 <ArticleSmall
                   className="article--small"

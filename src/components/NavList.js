@@ -6,15 +6,20 @@ class NavList extends React.Component {
   state = { topics: [] };
 
   componentDidMount() {
-    api.getTopics().then((topics) => {
-      this.setState({ topics });
-    });
+    this.requestTopics();
   }
 
+  requestTopics = () => {
+    return api.getTopics().then((topics) => {
+      this.setState({ topics });
+    });
+  };
+
   render() {
+    const { topics } = this.state;
     return (
       <ul className="nav__list">
-        {this.state.topics.map((topic) => {
+        {topics.map((topic) => {
           return (
             <li key={topic.slug} className="nav__element">
               <Link to={`/${topic.slug}`}>{topic.slug}</Link>

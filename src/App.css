@@ -1,3 +1,27 @@
+@media screen and (max-width: 450px) {
+  .App {
+    display: grid;
+    grid-template-columns: 8fr 1fr;
+    grid-template-rows: 8vh 5vh 3vh auto;
+    grid-template-areas: "banner user" "nav nav" "sort sort" "main main";
+  }
+  .banner__container {
+    grid-area: banner;
+  }
+  .banner__username {
+    grid-area: user;
+  }
+  .nav__container {
+    grid-area: nav;
+  }
+  .main__sorting {
+    grid-area: sort;
+  }
+  .main__container {
+    grid-area: main;
+  }
+}
+
 .App {
   display: grid;
   grid-template-columns: 4fr 1fr;

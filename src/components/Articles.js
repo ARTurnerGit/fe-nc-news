@@ -29,7 +29,7 @@ class Articles extends React.Component {
     }
   }
 
-  requestArticlesAndSetState() {
+  requestArticlesAndSetState = () => {
     const { sort_by, order } = this.state;
     const { topic_slug: topic } = this.props;
     api
@@ -44,7 +44,7 @@ class Articles extends React.Component {
       .catch((err) => {
         this.setState({ isLoading: false, err: err.response.data.msg });
       });
-  }
+  };
 
   updateQueries = ({ sort_by, order }) => {
     this.setState({ sort_by, order });

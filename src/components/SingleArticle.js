@@ -50,7 +50,7 @@ class SingleArticle extends React.Component {
   render() {
     const { article, comments, isLoading, articleErr } = this.state;
 
-    if (isLoading === true) return <LoadingMessage />;
+    if (isLoading) return <LoadingMessage />;
     else if (articleErr.length !== 0) return <ErrorMessage err={articleErr} />;
     else
       return (

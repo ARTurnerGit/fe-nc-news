@@ -1,13 +1,18 @@
 import React from "react";
 import * as api from "../../api";
+import ErrorMessage from "./ErrorMessage";
 
 // PROPS article_id, username, requestCommentsByArticleId
 class AddCommentForm extends React.Component {
-  state = { body: "" };
+  state = { body: "", err: "" };
 
   submitComment = (e) => {
     e.preventDefault();
-    api
+    this.sendComment();
+  };
+
+  sendComment = () => {
+    return api
       .postCommentByArticleId({
         body: this.state.body,
         article_id: this.props.article_id,
@@ -20,10 +25,10 @@ class AddCommentForm extends React.Component {
         this.props.requestCommentsByArticleId();
       })
       .catch((err) => {
-        console.dir(err);
-        alert(
-          "There was a problem submitting your comment, please try again later"
-        );
+        this.setState({
+          err:
+            "There was a problem submitting your comment, please try again later",
+        });
       });
   };
 
@@ -32,23 +37,26 @@ class AddCommentForm extends React.Component {
   };
 
   render() {
-    return (
-      <div>
-        <form onSubmit={this.submitComment}>
-          <label>
-            Comment on this article:
-            <input
-              type="text"
-              onChange={this.changeCommentText}
-              value={this.state.body}
-              placeholder={`Commenting as ${this.props.username}`}
-              required
-            />
-          </label>
-          <button>SUBMIT MY COMMENT</button>
-        </form>
-      </div>
-    );
+    if (this.state.err.length !== 0)
+      return <ErrorMessage err={this.state.err} />;
+    else
+      return (
+        <div>
+          <form onSubmit={this.submitComment}>
+            <label>
+              Comment on this article:
+              <input
+                type="text"
+                onChange={this.changeCommentText}
+                value={this.state.body}
+                placeholder={`Commenting as ${this.props.username}`}
+                required
+              />
+            </label>
+            <button>SUBMIT MY COMMENT</button>
+          </form>
+        </div>
+      );
   }
 }
 

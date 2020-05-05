@@ -9,7 +9,7 @@ import SingleArticle from "./components/SingleArticle";
 
 class App extends React.Component {
   // hardcoded username for the time being
-  state = { username: "grumpy19" };
+  state = { username: "jessjelly" };
   render() {
     return (
       <div className="App">

@@ -62,7 +62,7 @@ a:hover {
   font-size: 2em;
   font-style: italic;
   list-style-type: none;
-  margin: 2vh auto;
+  margin: 1vh auto;
   padding: 1vh 1vw;
   text-align: center;
   width: 70%;
@@ -93,9 +93,11 @@ a:hover {
   padding: 0.5vh 0.5vw;
   border: 1px solid black;
   font-size: 0.8em;
-  margin: 0.5vh 0;
+  margin: 1vh 0;
 }
 .main__articles--small {
+  width: 70%;
+  margin: 1vh auto;
 }
 .main__articles--large {
 }
@@ -104,8 +106,54 @@ a:hover {
 .main__comments {
 }
 
-.article--small {
+.article__container--small {
+  border: 2px solid black;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: "info upvote" "title vote_count" "comments downvote";
+  margin: 2vh 0;
+  border-radius: 5px;
+  background-color: white;
 }
+.article__container--small p {
+  margin: 0;
+  padding: 0;
+}
+.article__information--small {
+  grid-area: info;
+  font-size: 0.9em;
+  display: flex;
+  justify-content: space-around;
+}
+.article__title--small {
+  grid-area: title;
+  font-size: 1.5em;
+  text-align: center;
+}
+.article__comments--small {
+  grid-area: comments;
+  font-size: 0.9em;
+  text-align: center;
+  font-style: italic;
+}
+.article__voting--upvote {
+  grid-area: upvote;
+}
+.article__voting--count {
+  grid-area: vote_count;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+}
+.article__voting--downvote {
+  grid-area: downvote;
+}
+.vote--selected {
+  background-color: black;
+}
+
 .comment--small {
 }
 

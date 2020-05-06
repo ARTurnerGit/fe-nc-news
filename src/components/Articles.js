@@ -64,7 +64,6 @@ class Articles extends React.Component {
             {articles.map((article) => {
               return (
                 <ArticleSmall
-                  className="article__container--small"
                   key={article.article_id}
                   username={this.props.username}
                   {...article}

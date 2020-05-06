@@ -40,21 +40,31 @@ class VotingButtons extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <button
           onClick={() => this.handleUserVote(1)}
-          className={this.state.userVote === 1 ? "selected" : "normal"}
+          className={
+            this.state.userVote === 1
+              ? "article__voting--upvote selected"
+              : "article__voting--upvote"
+          }
         >
-          +1
+          &#8593;
         </button>
-        {this.props.votes + this.state.userVote}
+        <p className="article__voting--count">
+          {this.props.votes + this.state.userVote}
+        </p>
         <button
           onClick={() => this.handleUserVote(-1)}
-          className={this.state.userVote === -1 ? "selected" : "normal"}
+          className={
+            this.state.userVote === -1
+              ? "article__voting--downvote selected"
+              : "article__voting--downvote"
+          }
         >
-          -1
+          &#8595;
         </button>
-      </div>
+      </>
     );
   }
 }

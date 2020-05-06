@@ -12,18 +12,18 @@ class AddCommentForm extends React.Component {
 
   sendComment = () => {
     const { body } = this.state;
-    const { article_id, username, requestCommentsByArticleId } = this.props;
+    const { article_id, username, addCommentToState } = this.props;
     return api
       .postCommentByArticleId({
         body,
         article_id,
         username,
       })
-      .then(() => {
+      .then((comment) => {
+        addCommentToState(comment);
         this.setState({
           body: "",
         });
-        requestCommentsByArticleId();
       })
       .catch((err) => {
         this.setState({

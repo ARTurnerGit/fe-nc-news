@@ -31,6 +31,15 @@ class SingleArticle extends React.Component {
     amendedComments.splice(indexToRemove, 1);
     this.setState({ comments: amendedComments });
   };
+
+  addCommentToState = (newComment) => {
+    const amendedComments = [...this.state.comments];
+
+    amendedComments.unshift(newComment);
+
+    this.setState({ comments: amendedComments });
+  };
+
   requestArticleById = () => {
     const { article_id } = this.props;
     return api
@@ -85,7 +94,7 @@ class SingleArticle extends React.Component {
             <AddCommentForm
               article_id={article_id}
               username={username}
-              requestCommentsByArticleId={this.requestCommentsByArticleId}
+              addCommentToState={this.addCommentToState}
             />
           </section>
           <section className="main__comments">

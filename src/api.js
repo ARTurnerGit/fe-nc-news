@@ -50,15 +50,9 @@ export const postCommentByArticleId = ({ article_id, username, body }) => {
       `https://art-news-server.herokuapp.com/api/articles/${article_id}/comments`,
       { username, body }
     )
-    .then(
-      ({
-        data: {
-          comment: { comment_id },
-        },
-      }) => {
-        return comment_id;
-      }
-    );
+    .then(({ data: { comment } }) => {
+      return comment;
+    });
 };
 
 export const patchItemByItemId = ({

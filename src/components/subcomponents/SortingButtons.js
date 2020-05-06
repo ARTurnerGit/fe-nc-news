@@ -38,7 +38,7 @@ class SortingButtons extends React.Component {
   render() {
     return (
       <>
-        SORT:
+        Sort by <br />
         <button
           onClick={this.updateSortBy}
           name="created_at"

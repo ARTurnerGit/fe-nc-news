@@ -20,8 +20,8 @@ class App extends React.Component {
         <nav className="nav__container">
           <NavList />
         </nav>
-        <main className="main__container">
-          <Router>
+        <main>
+          <Router className="main__container">
             <Articles path="/" username={this.state.username} />
             <Articles path="/:topic_slug" username={this.state.username} />
             <SingleArticle

@@ -70,9 +70,11 @@
 **Articles.js:**
 [x] _componentDidUpdate would be neater/more DRY if you destructured sortby, order and topicslug from props and state, and could even assign the three conditions to variables to make it even more readable_
 
-**VotingButtons / api"** _a nice challenge for you might be to merge your api.patch functions into a single one to save you having to use an if statement in your `requestVoteChange` method_
+**VotingButtons / api"**
+[x]_a nice challenge for you might be to merge your api.patch functions into a single one to save you having to use an if statement in your `requestVoteChange` method_
 
-**AddCommentForm / Comment / SingleArticle** _I would argue that fetching all the comments again after someone has posted one or deleted one is a bit inefficient, and could lead to undesired behaviour if there were other people commenting/deleting at the same time, or you implemented some sorting functionality on your comments (my comment might end up way down the page, or I might think i've deleted a different comment by mistake!) - instead, maybe you could add the successfully posted comment to the state of the SingleArticle component & remove the deleted comment from the state of the SingleArticle component, meaning the entire comments list does not have to re-render_
+**AddCommentForm / Comment / SingleArticle**
+[]_I would argue that fetching all the comments again after someone has posted one or deleted one is a bit inefficient, and could lead to undesired behaviour if there were other people commenting/deleting at the same time, or you implemented some sorting functionality on your comments (my comment might end up way down the page, or I might think i've deleted a different comment by mistake!) - instead, maybe you could add the successfully posted comment to the state of the SingleArticle component & remove the deleted comment from the state of the SingleArticle component, meaning the entire comments list does not have to re-render_
 
 ## MAKE SURE ALL TESTS ARE STILL PASSING IN BACK END
 

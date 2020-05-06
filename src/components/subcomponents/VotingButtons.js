@@ -6,17 +6,11 @@ class VotingButtons extends React.Component {
 
   requestVoteChange = (changeInVotes) => {
     const { article_id, comment_id } = this.props;
-    if (article_id !== undefined) {
-      return api.patchArticleByArticleId({
-        article_id,
-        changeInVotes,
-      });
-    } else if (comment_id !== undefined) {
-      return api.patchCommentByCommentId({
-        comment_id,
-        changeInVotes,
-      });
-    }
+    return api.patchItemByItemId({
+      article_id,
+      comment_id,
+      changeInVotes,
+    });
   };
 
   handleUserVote = (vote) => {

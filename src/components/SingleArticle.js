@@ -21,6 +21,16 @@ class SingleArticle extends React.Component {
     this.requestCommentsByArticleId();
   }
 
+  removeCommentFromState = (comment_id) => {
+    const amendedComments = [...this.state.comments];
+
+    const indexToRemove = amendedComments.findIndex(
+      (comment) => comment.comment_id === comment_id
+    );
+
+    amendedComments.splice(indexToRemove, 1);
+    this.setState({ comments: amendedComments });
+  };
   requestArticleById = () => {
     const { article_id } = this.props;
     return api
@@ -86,7 +96,7 @@ class SingleArticle extends React.Component {
                   key={comment.comment_id}
                   {...comment}
                   username={username}
-                  requestCommentsByArticleId={this.requestCommentsByArticleId}
+                  removeCommentFromState={this.removeCommentFromState}
                 />
               );
             })}

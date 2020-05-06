@@ -9,7 +9,7 @@ function Comment({
   author,
   body,
   username,
-  requestCommentsByArticleId,
+  removeCommentFromState,
 }) {
   return (
     <div>
@@ -28,7 +28,7 @@ function Comment({
         author={author}
         username={username}
         comment_id={comment_id}
-        requestCommentsByArticleId={requestCommentsByArticleId}
+        removeCommentFromState={removeCommentFromState}
       />
     </div>
   );

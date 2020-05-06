@@ -6,16 +6,11 @@ class DeleteButton extends React.Component {
   state = { err: "" };
 
   requestCommentDeletion = (e) => {
-    const { comment_id, requestCommentsByArticleId } = this.props;
-
-    api
-      .deleteCommentByCommentId(comment_id)
-      .then(() => {
-        requestCommentsByArticleId();
-      })
-      .catch((err) => {
-        this.setState({ err: "there was a problem deleting this comment" });
-      });
+    const { comment_id, removeCommentFromState } = this.props;
+    removeCommentFromState(comment_id);
+    api.deleteCommentByCommentId(comment_id).catch((err) => {
+      this.setState({ err: "there was a problem deleting this comment" });
+    });
   };
   render() {
     const { err } = this.state;

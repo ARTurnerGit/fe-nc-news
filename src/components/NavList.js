@@ -19,6 +19,7 @@ class NavList extends React.Component {
     const { topics } = this.state;
     return (
       <ul className="nav__list">
+        Topics
         {topics.map((topic) => {
           return (
             <li key={topic.slug} className="nav__element">

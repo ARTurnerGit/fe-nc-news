@@ -61,10 +61,10 @@
 - [✅] Set state correctly, using previous state where possible
 - [✅] Handle asynchronicity clearly (i.e. isLoading pattern)
 - [✅] Functions are DRY (`handleChange` for controlled components / api calls)
-- [ ] Use object destructuring where possible - **Mostly ✅ - a few places where you could repeat this.props less, if I was being picky**
+- [x] Use object destructuring where possible - **Mostly ✅ - a few places where you could repeat this.props less, if I was being picky**
 - [✅] Tidy? If not: ESLint / Prettier
 - [✅] `node_modules` git ignored
-- [ ] No `console.log`s / comments
+- [x] No `console.log`s / comments
 - [✅] remove unnecessary files (e.g. App.test.js)
 
 **Articles.js:** _componentDidUpdate would be neater/more DRY if you destructured sortby, order and topicslug from props and state, and could even assign the three conditions to variables to make it even more readable_

@@ -2,7 +2,6 @@ import React from "react";
 import DeleteButton from "./DeleteButton";
 import VotingButtons from "./VotingButtons";
 
-//PROPS comment_id, votes, created_at, author, body (for the comment), username, requestCommentsByArticleId
 function Comment({
   comment_id,
   votes,

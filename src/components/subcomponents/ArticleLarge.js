@@ -1,6 +1,5 @@
 import React from "react";
 
-// PROPS: author, title, article_id, body, topic, created_at, votes, comment_count (for the article)
 function ArticleLarge({ title, article_id, body, topic }) {
   return (
     <div>

@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "@reach/router";
 import VotingButtons from "./VotingButtons";
 
-// PROPS: author, title, article_id, topic, created_at, votes, comment_count (all related to an article), username
 function ArticleSmall({
   author,
   title,

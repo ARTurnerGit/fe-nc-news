@@ -7,7 +7,6 @@ import LoadingMessage from "./subcomponents/LoadingMessage";
 import VotingButtons from "./subcomponents/VotingButtons";
 import ErrorMessage from "./subcomponents/ErrorMessage";
 
-// PROPS: topic_slug, article_id, username
 class SingleArticle extends React.Component {
   state = {
     article: {},
@@ -23,8 +22,9 @@ class SingleArticle extends React.Component {
   }
 
   requestArticleById = () => {
+    const { article_id } = this.props;
     return api
-      .getArticleById(this.props.article_id)
+      .getArticleById(article_id)
       .then((article) => {
         this.setState({ article, isLoading: false, articleErr: "" });
       })
@@ -43,8 +43,9 @@ class SingleArticle extends React.Component {
   };
 
   requestCommentsByArticleId = () => {
+    const { article_id } = this.props;
     return api
-      .getCommentsByArticleId(this.props.article_id)
+      .getCommentsByArticleId(article_id)
       .then((comments) => {
         this.setState({ comments });
       })
@@ -55,6 +56,7 @@ class SingleArticle extends React.Component {
 
   render() {
     const { article, comments, isLoading, articleErr } = this.state;
+    const { username, article_id } = this.props;
 
     if (isLoading) return <LoadingMessage />;
     else if (articleErr.length !== 0) return <ErrorMessage err={articleErr} />;
@@ -67,12 +69,12 @@ class SingleArticle extends React.Component {
           <VotingButtons
             votes={article.votes}
             article_id={article.article_id}
-            username={this.props.username}
+            username={username}
           />
           <section className="main__form">
             <AddCommentForm
-              article_id={this.props.article_id}
-              username={this.props.username}
+              article_id={article_id}
+              username={username}
               requestCommentsByArticleId={this.requestCommentsByArticleId}
             />
           </section>
@@ -83,7 +85,7 @@ class SingleArticle extends React.Component {
                   className="comment--small"
                   key={comment.comment_id}
                   {...comment}
-                  username={this.props.username}
+                  username={username}
                   requestCommentsByArticleId={this.requestCommentsByArticleId}
                 />
               );

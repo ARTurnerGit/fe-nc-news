@@ -2,7 +2,6 @@ import React from "react";
 import * as api from "../../api";
 import ErrorMessage from "./ErrorMessage";
 
-// PROPS article_id, username, requestCommentsByArticleId
 class AddCommentForm extends React.Component {
   state = { body: "", err: "" };
 
@@ -12,17 +11,19 @@ class AddCommentForm extends React.Component {
   };
 
   sendComment = () => {
+    const { body } = this.state;
+    const { article_id, username, requestCommentsByArticleId } = this.props;
     return api
       .postCommentByArticleId({
-        body: this.state.body,
-        article_id: this.props.article_id,
-        username: this.props.username,
+        body,
+        article_id,
+        username,
       })
       .then(() => {
         this.setState({
           body: "",
         });
-        this.props.requestCommentsByArticleId();
+        requestCommentsByArticleId();
       })
       .catch((err) => {
         this.setState({
@@ -37,8 +38,9 @@ class AddCommentForm extends React.Component {
   };
 
   render() {
-    if (this.state.err.length !== 0)
-      return <ErrorMessage err={this.state.err} />;
+    const { err, body } = this.state;
+    const { username } = this.props;
+    if (err.length !== 0) return <ErrorMessage err={err} />;
     else
       return (
         <div>
@@ -48,8 +50,8 @@ class AddCommentForm extends React.Component {
               <input
                 type="text"
                 onChange={this.changeCommentText}
-                value={this.state.body}
-                placeholder={`Commenting as ${this.props.username}`}
+                value={body}
+                placeholder={`Commenting as ${username}`}
                 required
               />
             </label>

@@ -3,7 +3,6 @@ import * as api from "../api";
 import LoadingMessage from "./subcomponents/LoadingMessage";
 import ErrorMessage from "./subcomponents/ErrorMessage";
 
-// PROPS: username
 class UserDetails extends React.Component {
   state = { name: "", avatar_url: "", isLoading: true, err: "" };
 
@@ -12,20 +11,23 @@ class UserDetails extends React.Component {
   }
 
   requestUserDetails = () => {
+    const { username } = this.props;
     return api
-      .getUserByUsername(this.props.username)
+      .getUserByUsername(username)
       .then(({ name, avatar_url }) => {
         this.setState({ name, avatar_url, isLoading: false, err: "" });
       })
       .catch((err) =>
-        this.setState({ isLoading: false, err: err.response.data.msg })
+        this.setState({ isLoading: false, err: "User not found" })
       );
   };
 
   render() {
     const { isLoading, err, avatar_url } = this.state;
+    const { username } = this.props;
+
     if (isLoading) return <LoadingMessage />;
-    else if (err.length !== 0) return <ErrorMessage err="User not found" />;
+    else if (err.length !== 0) return <ErrorMessage err={err} />;
     else
       return (
         <div className="banner__end">
@@ -35,7 +37,7 @@ class UserDetails extends React.Component {
               alt="some sort of avatar"
               className="banner__userimage"
             />
-            {this.props.username}
+            {username}
           </label>
         </div>
       );

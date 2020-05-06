@@ -5,7 +5,6 @@ import SortingButtons from "./subcomponents/SortingButtons";
 import LoadingMessage from "./subcomponents/LoadingMessage";
 import ErrorMessage from "./subcomponents/ErrorMessage";
 
-// PROPS: username, topic_slug
 class Articles extends React.Component {
   state = {
     articles: [],
@@ -20,10 +19,13 @@ class Articles extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
+    const { sort_by, order } = this.state;
+    const { topic_slug } = this.props;
+
     if (
-      prevState.sort_by !== this.state.sort_by ||
-      prevState.order !== this.state.order ||
-      prevProps.topic_slug !== this.props.topic_slug
+      prevState.sort_by !== sort_by ||
+      prevState.order !== order ||
+      prevProps.topic_slug !== topic_slug
     ) {
       this.requestArticlesAndSetState();
     }
@@ -55,6 +57,8 @@ class Articles extends React.Component {
 
   render() {
     const { articles, err, isLoading } = this.state;
+    const { username } = this.props;
+
     if (isLoading) return <LoadingMessage />;
     else if (err.length !== 0) return <ErrorMessage err={err} />;
     else
@@ -68,7 +72,7 @@ class Articles extends React.Component {
               return (
                 <ArticleSmall
                   key={article.article_id}
-                  username={this.props.username}
+                  username={username}
                   {...article}
                 />
               );

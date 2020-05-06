@@ -48,7 +48,7 @@ Test it out, make sure that everything is working as expected.
 
 ## Deploy a Production Version
 
-`netlify deploy --prod`
+[x]`netlify deploy --prod`
 Specify your build path again.
 This will deploy the site to your actual url: `https://your-site-name.netlify.com`.
 

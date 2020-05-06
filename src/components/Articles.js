@@ -18,15 +18,15 @@ class Articles extends React.Component {
     this.requestArticlesAndSetState();
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  componentDidUpdate(prevProps, prevState) {
     const { sort_by, order } = this.state;
     const { topic_slug } = this.props;
 
-    if (
-      prevState.sort_by !== sort_by ||
-      prevState.order !== order ||
-      prevProps.topic_slug !== topic_slug
-    ) {
+    const sort_byHasChanged = prevState.sort_by !== sort_by;
+    const orderHasChanged = prevState.order !== order;
+    const topicHasChanged = prevProps.topic_slug !== topic_slug;
+
+    if (sort_byHasChanged || orderHasChanged || topicHasChanged) {
       this.requestArticlesAndSetState();
     }
   }

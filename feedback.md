@@ -67,7 +67,8 @@
 - [x] No `console.log`s / comments
 - [✅] remove unnecessary files (e.g. App.test.js)
 
-**Articles.js:** _componentDidUpdate would be neater/more DRY if you destructured sortby, order and topicslug from props and state, and could even assign the three conditions to variables to make it even more readable_
+**Articles.js:**
+[x] _componentDidUpdate would be neater/more DRY if you destructured sortby, order and topicslug from props and state, and could even assign the three conditions to variables to make it even more readable_
 
 **VotingButtons / api"** _a nice challenge for you might be to merge your api.patch functions into a single one to save you having to use an if statement in your `requestVoteChange` method_
 

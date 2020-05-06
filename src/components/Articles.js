@@ -42,7 +42,10 @@ class Articles extends React.Component {
         this.setState({ articles, isLoading: false, err: "" });
       })
       .catch((err) => {
-        this.setState({ isLoading: false, err: err.response.data.msg });
+        this.setState({
+          isLoading: false,
+          err: `Sorry, nothing found for topic: ${topic}`,
+        });
       });
   };
 

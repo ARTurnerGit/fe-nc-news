@@ -6,6 +6,7 @@ import UserDetails from "./components/UserDetails";
 import NavList from "./components/NavList";
 import Articles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
+import ErrorMessage from "./components/subcomponents/ErrorMessage";
 
 class App extends React.Component {
   // hardcoded username for the time being
@@ -28,6 +29,7 @@ class App extends React.Component {
               path="/:topic_slug/:article_id"
               username={this.state.username}
             />
+            <ErrorMessage default />
           </Router>
         </main>
       </div>

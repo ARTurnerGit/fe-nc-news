@@ -29,9 +29,15 @@ class SingleArticle extends React.Component {
         this.setState({ article, isLoading: false, articleErr: "" });
       })
       .catch((err) => {
+        let msg = "";
+        if (err.response.status === 400)
+          msg =
+            "Please check that the path is /topic/article_id where article_id is a number";
+        else if (err.response.status === 404)
+          msg = `Sorry, we can't find an article with the id ${this.props.article_id}`;
         this.setState({
           isLoading: false,
-          articleErr: err.response.data.msg,
+          articleErr: msg,
         });
       });
   };

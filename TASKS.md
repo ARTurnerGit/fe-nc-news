@@ -51,10 +51,10 @@ You should implement the following functionality in your website. Check the lect
 **As a hiring partner, I should be able to...**
 
 [] use the site on my mobile without sacrificing style or functionality (as I may not have my laptop nearby).
-[] follow the readme instructions to easily run the project locally.
-[] find a link to the hosted version of the project in the readme.
-[] find a link to the back-end repository of the project in the readme.
-[] find a link to the hosted version of the back-end project in the readme.
+[x] follow the readme instructions to easily run the project locally.
+[x] find a link to the hosted version of the project in the readme.
+[x] find a link to the back-end repository of the project in the readme.
+[x] find a link to the hosted version of the back-end project in the readme.
 
 **Error-handling: As a user, I should...**
 

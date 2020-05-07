@@ -2,20 +2,20 @@
 
 ## README - write your own and make sure that it:
 
-- [ ] has a link to the deployed version
-- [ ] provides general info about your app
-- [ ] includes links to your back end repo
-- [ ] specifies the minimum version of Node required to run locally (check your Node version, `node --version` and use the major version that you are on)
-- [ ] has clear instructions on how to run your project locally (`git clone <repo-url>, cd ...`)
+- [x] has a link to the deployed version
+- [x] provides general info about your app
+- [x] includes links to your back end repo
+- [x] specifies the minimum version of Node required to run locally (check your Node version, `node --version` and use the major version that you are on)
+- [x] has clear instructions on how to run your project locally (`git clone <repo-url>, cd ...`)
 
 ## UX - I'll look again once you're done with styling
 
-- [ ] Basic styling added
+- [x] Basic styling added
 - [ ] Responsive design
-- [ ] Items aligned
-- [ ] Content legible (not too wide, obstructed, etc)
+- [x] Items aligned
+- [x] Content legible (not too wide, obstructed, etc)
 - [✅] Refreshing doesn’t cause an issue on sub-pages
-- [ ] No errors in the console
+- [x] No errors in the console
 - [✅] Votes / Posts / Deletions happen instantly _OR_ give user indication of loading
 
 ## Functionality

@@ -43,21 +43,17 @@ class AddCommentForm extends React.Component {
     if (err.length !== 0) return <ErrorMessage err={err} />;
     else
       return (
-        <div>
-          <form onSubmit={this.submitComment}>
-            <label>
-              Comment on this article:
-              <input
-                type="text"
-                onChange={this.changeCommentText}
-                value={body}
-                placeholder={`Commenting as ${username}`}
-                required
-              />
-            </label>
-            <button>SUBMIT MY COMMENT</button>
-          </form>
-        </div>
+        <form className="form__container" onSubmit={this.submitComment}>
+          <input
+            className="form__input"
+            type="text"
+            onChange={this.changeCommentText}
+            value={body}
+            placeholder={`What's on your mind, ${username}?`}
+            required
+          />
+          <button className="form__button">SUBMIT MY COMMENT</button>
+        </form>
       );
   }
 }

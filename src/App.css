@@ -352,6 +352,7 @@ button:hover {
     border: 2px solid white;
     border-radius: 100%;
   }
+
   .nav__container {
     width: 100%;
   }
@@ -364,6 +365,23 @@ button:hover {
   .nav__element {
     display: inline;
     font-size: 1em;
+  }
+
+  .main__container {
+    width: 100%;
+  }
+  .main__sorting {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    width: 80%;
+    border-radius: 10px;
+  }
+  .main__sorting button {
+    padding: 0.5vh 0.5vw;
+    border: 1px solid black;
+    font-size: 0.8em;
+    margin: 1vh 0;
   }
 }
 

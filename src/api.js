@@ -8,13 +8,13 @@ export const getUserByUsername = (username) => {
     });
 };
 
-export const getArticles = ({ sort_by, order, topic }) => {
+export const getArticles = ({ sort_by, order, topic, limit, p }) => {
   return axios
     .get("https://art-news-server.herokuapp.com/api/articles", {
-      params: { sort_by, order, topic },
+      params: { sort_by, order, topic, limit, p },
     })
-    .then(({ data: { articles } }) => {
-      return articles;
+    .then(({ data }) => {
+      return data;
     });
 };
 

@@ -9,7 +9,6 @@ import SingleArticle from "./components/SingleArticle";
 import ErrorMessage from "./components/subcomponents/ErrorMessage";
 
 class App extends React.Component {
-  // hardcoded username for the time being
   state = { username: "jessjelly" };
   render() {
     return (

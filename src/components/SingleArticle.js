@@ -21,22 +21,22 @@ class SingleArticle extends React.Component {
   }
 
   removeCommentFromState = (comment_id) => {
-    const amendedComments = [...this.state.comments];
-
-    const indexToRemove = amendedComments.findIndex(
-      (comment) => comment.comment_id === comment_id
-    );
-
-    amendedComments.splice(indexToRemove, 1);
-    this.setState({ comments: amendedComments });
+    this.setState((currentState) => {
+      const amendedComments = [...currentState.comments];
+      const indexToRemove = amendedComments.findIndex(
+        (comment) => comment.comment_id === comment_id
+      );
+      amendedComments.splice(indexToRemove, 1);
+      return { comments: amendedComments };
+    });
   };
 
   addCommentToState = (newComment) => {
-    const amendedComments = [...this.state.comments];
-
-    amendedComments.unshift(newComment);
-
-    this.setState({ comments: amendedComments });
+    this.setState((currentState) => {
+      const amendedComments = [...currentState.comments];
+      amendedComments.unshift(newComment);
+      return { comments: amendedComments };
+    });
   };
 
   requestArticleById = () => {
@@ -52,7 +52,7 @@ class SingleArticle extends React.Component {
           msg =
             "Please check that the path is /topic/article_id where article_id is a number";
         else if (err.response.status === 404)
-          msg = `Sorry, we can't find an article with the id ${this.props.article_id}`;
+          msg = `Sorry, we can't find an article with the id ${article_id}`;
         this.setState({
           isLoading: false,
           articleErr: msg,

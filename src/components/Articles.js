@@ -4,6 +4,7 @@ import ArticleSmall from "./subcomponents/ArticleSmall";
 import SortingButtons from "./subcomponents/SortingButtons";
 import LoadingMessage from "./subcomponents/LoadingMessage";
 import ErrorMessage from "./subcomponents/ErrorMessage";
+// import Pagination from "./subcomponents/Pagination";
 
 class Articles extends React.Component {
   state = {
@@ -12,6 +13,9 @@ class Articles extends React.Component {
     order: "desc",
     err: "",
     isLoading: true,
+    limit: 100,
+    p: 1,
+    total_p: 1,
   };
 
   componentDidMount() {
@@ -32,16 +36,19 @@ class Articles extends React.Component {
   }
 
   requestArticlesAndSetState = () => {
-    const { sort_by, order } = this.state;
+    const { sort_by, order, limit, p } = this.state;
     const { topic_slug: topic } = this.props;
     api
       .getArticles({
         sort_by,
         order,
         topic,
+        limit,
+        p,
       })
-      .then((articles) => {
-        this.setState({ articles, isLoading: false, err: "" });
+      .then(({ articles, total_count }) => {
+        const total_p = Math.ceil(total_count / limit);
+        this.setState({ articles, total_p, isLoading: false, err: "" });
       })
       .catch((err) => {
         this.setState({
@@ -55,8 +62,12 @@ class Articles extends React.Component {
     this.setState({ sort_by, order });
   };
 
+  // updatePage = (change) => {
+  //   console.log(`changing the page number by ${change}`);
+  // };
+
   render() {
-    const { articles, err, isLoading } = this.state;
+    const { articles, err, isLoading, p, total_p } = this.state;
     const { username } = this.props;
 
     if (isLoading) return <LoadingMessage />;
@@ -78,6 +89,9 @@ class Articles extends React.Component {
               );
             })}
           </section>
+          {/* <section>
+            <Pagination p={p} total_p={total_p} updatePage={this.updatePage} />
+          </section> */}
         </>
       );
   }

@@ -4,7 +4,7 @@ import ArticleSmall from "./subcomponents/ArticleSmall";
 import SortingButtons from "./subcomponents/SortingButtons";
 import LoadingMessage from "./subcomponents/LoadingMessage";
 import ErrorMessage from "./subcomponents/ErrorMessage";
-// import Pagination from "./subcomponents/Pagination";
+import Pagination from "./subcomponents/Pagination";
 
 class Articles extends React.Component {
   state = {
@@ -23,14 +23,22 @@ class Articles extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { sort_by, order } = this.state;
+    const { sort_by, order, p, limit } = this.state;
     const { topic_slug } = this.props;
 
     const sort_byHasChanged = prevState.sort_by !== sort_by;
     const orderHasChanged = prevState.order !== order;
     const topicHasChanged = prevProps.topic_slug !== topic_slug;
+    const pageHasChanged = prevState.p !== p;
+    const limitHasChanged = prevState.limit !== limit;
 
-    if (sort_byHasChanged || orderHasChanged || topicHasChanged) {
+    if (
+      sort_byHasChanged ||
+      orderHasChanged ||
+      topicHasChanged ||
+      pageHasChanged ||
+      limitHasChanged
+    ) {
       this.requestArticlesAndSetState();
     }
   }
@@ -38,6 +46,7 @@ class Articles extends React.Component {
   requestArticlesAndSetState = () => {
     const { sort_by, order, limit, p } = this.state;
     const { topic_slug: topic } = this.props;
+
     api
       .getArticles({
         sort_by,
@@ -62,9 +71,15 @@ class Articles extends React.Component {
     this.setState({ sort_by, order });
   };
 
-  // updatePage = (change) => {
-  //   console.log(`changing the page number by ${change}`);
-  // };
+  updatePage = (change) => {
+    this.setState((currentState) => {
+      return { p: currentState.p + change };
+    });
+  };
+
+  updateLimit = (newLimit) => {
+    this.setState({ limit: newLimit, p: 1 });
+  };
 
   render() {
     const { articles, err, isLoading, p, total_p } = this.state;
@@ -89,9 +104,14 @@ class Articles extends React.Component {
               );
             })}
           </section>
-          {/* <section>
-            <Pagination p={p} total_p={total_p} updatePage={this.updatePage} />
-          </section> */}
+          <section>
+            <Pagination
+              p={p}
+              total_p={total_p}
+              updatePage={this.updatePage}
+              updateLimit={this.updateLimit}
+            />
+          </section>
         </>
       );
   }

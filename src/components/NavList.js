@@ -3,7 +3,7 @@ import { Link } from "@reach/router";
 import * as api from "../api";
 
 class NavList extends React.Component {
-  state = { topics: [], currentSlug: "" };
+  state = { topics: [] };
 
   componentDidMount() {
     this.requestTopics();
@@ -19,7 +19,6 @@ class NavList extends React.Component {
 
   render() {
     const { topics } = this.state;
-
     return (
       <ul className="nav__list">
         Topics
@@ -27,7 +26,7 @@ class NavList extends React.Component {
           return (
             <li key={topic.slug} className="nav__element">
               <Link
-                onClick={this.getCurrentSlug}
+                onClick={this.handleClick}
                 to={`/${topic.slug}`}
                 name={topic.slug}
               >

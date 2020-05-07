@@ -20,9 +20,11 @@ class DeleteButton extends React.Component {
     } else {
       return (
         author === username && (
-          <button onClick={this.requestCommentDeletion}>
-            DELETE THIS COMMENT
-          </button>
+          <div className="comment__delete">
+            <button onClick={this.requestCommentDeletion}>
+              DELETE THIS COMMENT
+            </button>
+          </div>
         )
       );
     }

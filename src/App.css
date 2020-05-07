@@ -92,7 +92,6 @@ button:hover {
   font-style: italic;
 }
 .main__sorting button {
-  font-style: italic;
   padding: 0.5vh 0.5vw;
   border: 1px solid black;
   font-size: 0.8em;
@@ -102,46 +101,69 @@ button:hover {
   width: 70%;
   margin: 1vh auto;
 }
-.main__articles--large {
+.main__article--large {
+  width: 80%;
+  margin: 1vh auto;
 }
 .main__form {
 }
 .main__comments {
+  width: 60%;
+  margin: 1vh auto;
 }
 
 .article__container--small {
-  border: 2px solid black;
+  border: 1px solid black;
   display: grid;
+  height: 15vh;
   grid-template-columns: 4fr 1fr;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: 0.5fr 1.2fr 0.5fr;
   grid-template-areas: "info upvote" "title vote_count" "comments downvote";
   margin: 2vh 0;
   border-radius: 5px;
   background-color: white;
+  z-index: 1;
 }
 .article__container--small p {
   margin: 0;
-  padding: 0;
+  padding: 0 1vw;
+  white-space: nowrap;
 }
 .article__information--small {
   grid-area: info;
   font-size: 0.9em;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
 }
 .article__title--small {
   grid-area: title;
   font-size: 1.5em;
-  text-align: center;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-wrap: break-word;
+  overflow-y: hidden;
+  text-align: justify;
 }
 .article__comments--small {
   grid-area: comments;
   font-size: 0.9em;
-  text-align: center;
   font-style: italic;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 .article__voting--upvote {
   grid-area: upvote;
+  border-left: 1px dashed grey;
+  border-bottom: 1px dashed grey;
+  border-right: none;
+  border-top: none;
+  border-top-right-radius: 5px;
+  font-size: 1em;
+  z-index: 0;
 }
 .article__voting--count {
   grid-area: vote_count;
@@ -149,12 +171,132 @@ button:hover {
   justify-content: center;
   align-items: center;
   font-weight: 700;
+  border-left: 1px dashed grey;
+  border-right: none;
 }
 .article__voting--downvote {
   grid-area: downvote;
+  border-left: 1px dashed grey;
+  border-top: 1px dashed grey;
+  border-right: none;
+  border-bottom: none;
+  border-bottom-right-radius: 5px;
+  font-size: 1em;
+  z-index: 0;
 }
 
-.comment--small {
+.article__container--large {
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 3.5vh 8.2vh 3.5vh;
+  grid-template-areas: "info upvote" "title vote_count" "comments downvote" "body body";
+  margin: 2vh 0;
+  border-radius: 5px;
+  background-color: white;
+  z-index: 1;
+}
+.article__information--large {
+  grid-area: info;
+  margin: 0;
+  padding: 0 1vw;
+  font-size: 0.9em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.article__title--large {
+  grid-area: title;
+  margin: 0;
+  padding: 0 1vw;
+  font-size: 1.5em;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-wrap: break-word;
+  overflow-y: hidden;
+  text-align: justify;
+}
+.article__comments--large {
+  grid-area: comments;
+  margin: 0;
+  padding: 0 1vw;
+  font-size: 0.9em;
+  font-style: italic;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.article__voting--upvote {
+  grid-area: upvote;
+  border-left: 1px dashed grey;
+  border-bottom: 1px dashed grey;
+  border-right: none;
+  border-top: none;
+  border-top-right-radius: 5px;
+  font-size: 1em;
+  z-index: 0;
+}
+.article__voting--count {
+  grid-area: vote_count;
+  margin: 0;
+  padding: 0 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  border-left: 1px dashed grey;
+  border-right: none;
+}
+.article__voting--downvote {
+  grid-area: downvote;
+  border-left: 1px dashed grey;
+  border-top: 1px dashed grey;
+  border-right: none;
+  border-bottom: none;
+  border-bottom-right-radius: 5px;
+  font-size: 1em;
+  z-index: 0;
+}
+.article__body--large {
+  grid-area: body;
+  margin: 0;
+  padding: 1vh 1vw;
+  border-top: 2px solid black;
+}
+
+.comment__container {
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 0.5fr 1.2fr 0.5fr;
+  grid-template-areas: "info upvote" "body vote_count" "delete downvote";
+  margin: 2vh 0;
+  border-radius: 5px;
+  background-color: white;
+  z-index: 1;
+}
+.comment__container p {
+  margin: 0;
+  padding: 0 1vw;
+}
+.comment__info {
+  grid-area: info;
+  font-size: 0.9em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.comment__body {
+  grid-area: body;
+}
+.comment__delete {
+  grid-area: delete;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
 }
 
 @media screen and (max-width: 450px) {
@@ -182,5 +324,5 @@ button:hover {
 }
 
 .selected {
-  background-color: lightgrey;
+  background-color: #c31432;
 }

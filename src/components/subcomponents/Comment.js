@@ -11,13 +11,16 @@ function Comment({
   username,
   removeCommentFromState,
 }) {
+  const createdDate = new Date(Date.parse(created_at));
+  const userReadableDate = `${createdDate.getDate()} / ${createdDate.getMonth()} / ${createdDate.getFullYear()}`;
+
   return (
-    <div>
-      <p>
-        I am comment {comment_id} by {author}. I was created at {created_at} and
-        I currently have {votes} votes
+    <div className="comment__container">
+      <p className="comment__info">
+        {author}
+        <span>&#8226;</span>
+        {userReadableDate}
       </p>
-      <hr />
       <p>{body}</p>
       <VotingButtons
         votes={votes}

@@ -4,7 +4,6 @@ import ArticleLarge from "./subcomponents/ArticleLarge";
 import Comment from "./subcomponents/Comment";
 import AddCommentForm from "./subcomponents/AddCommentForm";
 import LoadingMessage from "./subcomponents/LoadingMessage";
-import VotingButtons from "./subcomponents/VotingButtons";
 import ErrorMessage from "./subcomponents/ErrorMessage";
 
 class SingleArticle extends React.Component {
@@ -83,13 +82,8 @@ class SingleArticle extends React.Component {
       return (
         <>
           <section className="main__article--large">
-            <ArticleLarge {...article} />
+            <ArticleLarge {...article} username={username} />
           </section>
-          <VotingButtons
-            votes={article.votes}
-            article_id={article.article_id}
-            username={username}
-          />
           <section className="main__form">
             <AddCommentForm
               article_id={article_id}
@@ -101,7 +95,6 @@ class SingleArticle extends React.Component {
             {comments.map((comment) => {
               return (
                 <Comment
-                  className="comment--small"
                   key={comment.comment_id}
                   {...comment}
                   username={username}

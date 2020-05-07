@@ -39,6 +39,8 @@ class VotingButtons extends React.Component {
   render() {
     const { userVote } = this.state;
     const { votes } = this.props;
+    const upArrow = String.fromCharCode(11014);
+    const downArrow = String.fromCharCode(11015);
     return (
       <>
         <button
@@ -49,7 +51,7 @@ class VotingButtons extends React.Component {
               : "article__voting--upvote"
           }
         >
-          &#8593;
+          {upArrow}
         </button>
         <p className="article__voting--count">{votes + userVote}</p>
         <button
@@ -60,7 +62,7 @@ class VotingButtons extends React.Component {
               : "article__voting--downvote"
           }
         >
-          &#8595;
+          {downArrow}
         </button>
       </>
     );

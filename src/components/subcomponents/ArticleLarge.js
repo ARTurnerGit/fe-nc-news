@@ -1,15 +1,41 @@
 import React from "react";
+import { Link } from "@reach/router";
+import VotingButtons from "./VotingButtons";
 
-function ArticleLarge({ title, article_id, body, topic }) {
+function ArticleLarge({
+  author,
+  title,
+  article_id,
+  topic,
+  created_at,
+  votes,
+  comment_count,
+  body,
+  username,
+}) {
+  const createdDate = new Date(Date.parse(created_at));
+  const userReadableDate = `${createdDate.getDate()} / ${createdDate.getMonth()} / ${createdDate.getFullYear()}`;
+
   return (
-    <div>
-      <p>
-        This is article {article_id}, called {title}, about {topic}. Here is the
-        body:
+    <div className="article__container--large">
+      <p className="article__information--large">
+        <Link to={`/${topic}`}>{topic}</Link>
+        <span>&#8226;</span>
+        {author}
+        <span>&#8226;</span>
+        {userReadableDate}
       </p>
-      <hr />
-      <p>{body}</p>
-      <hr />
+      <p className="article__title--large">
+        <Link to={`/${topic}/${article_id}`}>{title}</Link>
+      </p>
+      <p className="article__comments--large">{comment_count} comments</p>
+      <VotingButtons
+        className="article__voting--large"
+        votes={votes}
+        article_id={article_id}
+        username={username}
+      />
+      <p className="article__body--large">{body}</p>
     </div>
   );
 }

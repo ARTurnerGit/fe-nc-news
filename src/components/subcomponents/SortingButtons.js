@@ -37,6 +37,8 @@ class SortingButtons extends React.Component {
 
   render() {
     const { sort_by, order } = this.state;
+    const upArrow = String.fromCharCode(8593);
+    const downArrow = String.fromCharCode(8595);
     return (
       <>
         Sort by <br />
@@ -61,7 +63,9 @@ class SortingButtons extends React.Component {
         >
           Votes
         </button>
-        <button onClick={this.updateOrder}>{order}</button>
+        <button onClick={this.updateOrder}>
+          {order === "asc" ? upArrow : downArrow}
+        </button>
       </>
     );
   }

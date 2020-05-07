@@ -12,6 +12,9 @@ function ArticleSmall({
   comment_count,
   username,
 }) {
+  const createdDate = new Date(Date.parse(created_at));
+  const userReadableDate = `${createdDate.getDate()} / ${createdDate.getMonth()} / ${createdDate.getFullYear()}`;
+
   return (
     <div className="article__container--small">
       <p className="article__information--small">
@@ -19,7 +22,7 @@ function ArticleSmall({
         <span>&#8226;</span>
         {author}
         <span>&#8226;</span>
-        {created_at}
+        {userReadableDate}
       </p>
       <p className="article__title--small">
         <Link to={`/${topic}/${article_id}`}>{title}</Link>

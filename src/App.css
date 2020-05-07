@@ -387,6 +387,11 @@ button:hover {
     width: 90%;
     margin: 1vh auto;
   }
+  .main__article--large {
+    width: 95%;
+    margin: 1vh auto;
+  }
+
   .article__container--small {
     border: 2px solid black;
     border-radius: 10px;
@@ -405,6 +410,23 @@ button:hover {
   }
   .article__comments--small {
     font-size: 0.9em;
+  }
+
+  .article__container--large {
+    border: 2px solid black;
+    border-radius: 10px;
+  }
+  .article__information--large {
+    font-size: 0.7em;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .article__title--large {
+    font-size: 1.2em;
+    overflow-y: auto;
+  }
+  .article__comments--large {
+    font-size: 0.7em;
   }
 }
 

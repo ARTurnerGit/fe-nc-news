@@ -3,7 +3,7 @@ import { Link } from "@reach/router";
 import * as api from "../api";
 
 class NavList extends React.Component {
-  state = { topics: [], currentlySelected: "" };
+  state = { topics: [], currentSlug: "" };
 
   componentDidMount() {
     this.requestTopics();
@@ -11,17 +11,15 @@ class NavList extends React.Component {
 
   requestTopics = () => {
     return api.getTopics().then((topics) => {
-      this.setState({ topics, currentlySelected: "" });
+      this.setState({ topics });
     });
   };
 
-  handleClick = (e) => {
-    const currentlySelected = e.target.name;
-    this.setState({ currentlySelected });
-  };
+  handleClick = () => {};
 
   render() {
-    const { topics, currentlySelected } = this.state;
+    const { topics } = this.state;
+
     return (
       <ul className="nav__list">
         Topics
@@ -29,12 +27,9 @@ class NavList extends React.Component {
           return (
             <li key={topic.slug} className="nav__element">
               <Link
-                onClick={this.handleClick}
+                onClick={this.getCurrentSlug}
                 to={`/${topic.slug}`}
                 name={topic.slug}
-                className={
-                  topic.slug === currentlySelected ? "selected--nav" : "normal"
-                }
               >
                 {topic.slug}
               </Link>

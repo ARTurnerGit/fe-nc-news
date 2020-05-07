@@ -331,27 +331,39 @@ button:hover {
   font-style: italic;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   .App {
-    display: grid;
-    grid-template-columns: 8fr 1fr;
-    grid-template-rows: 8vh 5vh 3vh auto;
-    grid-template-areas: "banner user" "nav nav" "sort sort" "main main";
+    display: flex;
+    flex-direction: column;
   }
   .banner__container {
-    grid-area: banner;
+    height: auto;
   }
-  .banner__username {
-    grid-area: user;
+  .banner__title {
+    font-size: 10vw;
+    color: white;
+  }
+  .banner__end {
+    height: 8vh;
+    width: 8vh;
+  }
+  .banner__userimage {
+    height: 5vh;
+    border: 2px solid white;
+    border-radius: 100%;
   }
   .nav__container {
-    grid-area: nav;
+    width: 100%;
   }
-  .main__sorting {
-    grid-area: sort;
+  .nav__list {
+    display: flex;
+    font-size: 4vw;
+    justify-content: space-between;
+    align-items: baseline;
   }
-  .main__container {
-    grid-area: main;
+  .nav__element {
+    display: inline;
+    font-size: 1em;
   }
 }
 

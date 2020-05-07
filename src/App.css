@@ -391,6 +391,14 @@ button:hover {
     width: 95%;
     margin: 1vh auto;
   }
+  .main__form {
+    width: 80%;
+    margin: 1vh auto;
+  }
+  .main__comments {
+    width: 80%;
+    margin: 1vh auto;
+  }
 
   .article__container--small {
     border: 2px solid black;
@@ -422,11 +430,40 @@ button:hover {
     white-space: nowrap;
   }
   .article__title--large {
-    font-size: 1.2em;
-    overflow-y: auto;
+    font-size: 1.4em;
+    overflow-y: scroll;
   }
   .article__comments--large {
     font-size: 0.7em;
+  }
+
+  .form__container {
+    border: 2px solid black;
+    border-radius: 10px;
+  }
+  .form__input {
+    margin: 0 2vw;
+    font-size: 0.8em;
+  }
+  .form__button {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 0.6em;
+  }
+
+  .comment__container {
+    border: 2px solid black;
+    border-radius: 10px;
+  }
+  .comment__info {
+    font-size: 0.8em;
+    white-space: nowrap;
+  }
+  .comment__body {
+    grid-area: body;
+  }
+  .comment__delete {
+    border-top: 1px solid black;
   }
 }
 

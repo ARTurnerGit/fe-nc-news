@@ -372,16 +372,39 @@ button:hover {
   }
   .main__sorting {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: baseline;
     width: 80%;
     border-radius: 10px;
   }
   .main__sorting button {
-    padding: 0.5vh 0.5vw;
+    padding: 0.5vh 0;
     border: 1px solid black;
     font-size: 0.8em;
     margin: 1vh 0;
+  }
+  .main__articles--small {
+    width: 90%;
+    margin: 1vh auto;
+  }
+  .article__container--small {
+    border: 2px solid black;
+    border-radius: 10px;
+  }
+  .article__container--small p {
+    margin: 0;
+    padding: 0 1vw;
+    white-space: nowrap;
+  }
+  .article__information--small {
+    font-size: 0.9em;
+    overflow-x: auto;
+  }
+  .article__title--small {
+    font-size: 1.5em;
+  }
+  .article__comments--small {
+    font-size: 0.9em;
   }
 }
 

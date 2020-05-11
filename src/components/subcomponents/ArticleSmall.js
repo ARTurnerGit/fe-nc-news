@@ -28,7 +28,14 @@ function ArticleSmall({
           {topic}
         </Link>
         <span>&#8226;</span>
-        {author}
+        <Link
+          to={`/user/${author}`}
+          onClick={() => {
+            handleNavClick(`/user/${author}`);
+          }}
+        >
+          {author}
+        </Link>
         <span>&#8226;</span>
         {userReadableDate}
       </p>

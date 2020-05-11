@@ -76,8 +76,8 @@
 ### Additional functionality:
 
 - [ ] sort comments by votes/created_at
-- [ ] navigate over pages of articles (if implemented in back-end)
-- [ ] navigate over pages of comments (if implemented in back-end)
+- [x] navigate over pages of articles (if implemented in back-end)
+- [x] navigate over pages of comments (if implemented in back-end)
 - [ ] filter / display articles by specific user
 - [ ] post new article
 - [ ] delete logged in user's articles

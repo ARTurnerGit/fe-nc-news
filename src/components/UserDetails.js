@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "@reach/router";
 import * as api from "../api";
 import LoadingMessage from "./subcomponents/LoadingMessage";
 import ErrorMessage from "./subcomponents/ErrorMessage";
@@ -24,22 +25,29 @@ class UserDetails extends React.Component {
 
   render() {
     const { isLoading, err, avatar_url } = this.state;
-    const { username } = this.props;
+    const { username, handleNavClick } = this.props;
 
     if (isLoading) return <LoadingMessage />;
     else if (err.length !== 0) return <ErrorMessage err={err} />;
     else
       return (
-        <div className="banner__end">
-          <label className="banner__username">
-            <img
-              src={avatar_url}
-              alt="some sort of avatar"
-              className="banner__userimage"
-            />
-            {username}
-          </label>
-        </div>
+        <Link
+          to={`/user/${username}`}
+          onClick={() => {
+            handleNavClick(`/user/${username}`);
+          }}
+        >
+          <div className="banner__end">
+            <label className="banner__username">
+              <img
+                src={avatar_url}
+                alt="some sort of avatar"
+                className="banner__userimage"
+              />
+              {username}
+            </label>
+          </div>
+        </Link>
       );
   }
 }

@@ -6,6 +6,7 @@ import UserDetails from "./components/UserDetails";
 import NavList from "./components/NavList";
 import Articles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
+import UserPage from "./components/UserPage";
 import ErrorMessage from "./components/subcomponents/ErrorMessage";
 
 class App extends React.Component {
@@ -32,7 +33,10 @@ class App extends React.Component {
             handleNavClick={this.handleNavClick}
             currentPath={currentPath}
           />
-          <UserDetails username={username} />
+          <UserDetails
+            username={username}
+            handleNavClick={this.handleNavClick}
+          />
         </header>
         <nav className="nav__container">
           <NavList
@@ -55,7 +59,9 @@ class App extends React.Component {
             <SingleArticle
               path="/:topic_slug/:article_id"
               username={username}
+              handleNavClick={this.handleNavClick}
             />
+            <UserPage path="/user/:username" />
             <ErrorMessage default />
           </Router>
         </main>

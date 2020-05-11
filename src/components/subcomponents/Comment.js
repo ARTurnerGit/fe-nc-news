@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "@reach/router";
 import DeleteButton from "./DeleteButton";
 import VotingButtons from "./VotingButtons";
 
@@ -10,6 +11,7 @@ function Comment({
   body,
   username,
   removeCommentFromState,
+  handleNavClick,
 }) {
   const createdDate = new Date(Date.parse(created_at));
   const userReadableDate = `${createdDate.getDate()} / ${createdDate.getMonth()} / ${createdDate.getFullYear()}`;
@@ -17,7 +19,13 @@ function Comment({
   return (
     <div className="comment__container">
       <p className="comment__info">
-        {author}
+        <Link
+          to={`/user/${author}`}
+          onClick={() => handleNavClick(`/user/${author}`)}
+        >
+          {author}
+        </Link>
+
         <span>&#8226;</span>
         {userReadableDate}
       </p>

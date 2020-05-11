@@ -20,21 +20,18 @@ class SingleArticle extends React.Component {
     this.requestCommentsByArticleId();
   }
 
-  removeCommentFromState = (comment_id) => {
-    this.setState((currentState) => {
-      const amendedComments = [...currentState.comments];
-      const indexToRemove = amendedComments.findIndex(
-        (comment) => comment.comment_id === comment_id
-      );
-      amendedComments.splice(indexToRemove, 1);
+  removeCommentFromState = (comment_idToRemove) => {
+    this.setState(({ comments }) => {
+      const amendedComments = comments.filter(({ comment_id }) => {
+        return comment_id !== comment_idToRemove;
+      });
       return { comments: amendedComments };
     });
   };
 
   addCommentToState = (newComment) => {
-    this.setState((currentState) => {
-      const amendedComments = [...currentState.comments];
-      amendedComments.unshift(newComment);
+    this.setState(({ comments }) => {
+      const amendedComments = [newComment, ...comments];
       return { comments: amendedComments };
     });
   };
@@ -74,7 +71,7 @@ class SingleArticle extends React.Component {
 
   render() {
     const { article, comments, isLoading, articleErr } = this.state;
-    const { username, article_id } = this.props;
+    const { username, article_id, handleNavClick } = this.props;
 
     if (isLoading) return <LoadingMessage />;
     else if (articleErr.length !== 0) return <ErrorMessage err={articleErr} />;
@@ -82,7 +79,11 @@ class SingleArticle extends React.Component {
       return (
         <>
           <section className="main__article--large">
-            <ArticleLarge {...article} username={username} />
+            <ArticleLarge
+              {...article}
+              username={username}
+              handleNavClick={handleNavClick}
+            />
           </section>
           <section className="main__form">
             <AddCommentForm
@@ -98,6 +99,7 @@ class SingleArticle extends React.Component {
                   key={comment.comment_id}
                   {...comment}
                   username={username}
+                  handleNavClick={handleNavClick}
                   removeCommentFromState={this.removeCommentFromState}
                 />
               );

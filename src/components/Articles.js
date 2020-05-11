@@ -4,7 +4,7 @@ import ArticleSmall from "./subcomponents/ArticleSmall";
 import SortingButtons from "./subcomponents/SortingButtons";
 import LoadingMessage from "./subcomponents/LoadingMessage";
 import ErrorMessage from "./subcomponents/ErrorMessage";
-import Pagination from "./subcomponents/Pagination";
+// import Pagination from "./subcomponents/Pagination";
 
 class Articles extends React.Component {
   state = {
@@ -71,15 +71,15 @@ class Articles extends React.Component {
     this.setState({ sort_by, order });
   };
 
-  updatePage = (change) => {
-    this.setState((currentState) => {
-      return { p: currentState.p + change };
-    });
-  };
+  // updatePage = (change) => {
+  //   this.setState((currentState) => {
+  //     return { p: currentState.p + change };
+  //   });
+  // };
 
-  updateLimit = (newLimit) => {
-    this.setState({ limit: newLimit, p: 1 });
-  };
+  // updateLimit = (newLimit) => {
+  //   this.setState({ limit: newLimit, p: 1 });
+  // };
 
   render() {
     const { articles, err, isLoading, p, total_p } = this.state;
@@ -104,14 +104,14 @@ class Articles extends React.Component {
               );
             })}
           </section>
-          <section>
+          {/* <section>
             <Pagination
               p={p}
               total_p={total_p}
               updatePage={this.updatePage}
               updateLimit={this.updateLimit}
             />
-          </section>
+          </section> */}
         </>
       );
   }

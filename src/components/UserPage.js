@@ -1,8 +1,17 @@
 import React from "react";
+import UserDetails from "./UserDetails";
+import Articles from "./Articles";
 
 function UserPage({ username, handleNavClick }) {
-  console.log(username);
-  return <h1>You found me</h1>;
+  return (
+    <>
+      <div className="userPage__header">
+        <UserDetails username={username} handleNavClick={handleNavClick} />
+      </div>
+
+      <Articles author={username} handleNavClick={handleNavClick} />
+    </>
+  );
 }
 
 export default UserPage;

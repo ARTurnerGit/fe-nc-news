@@ -347,6 +347,35 @@ button:hover {
   align-items: baseline;
 }
 
+.userPage__header {
+  width: 30%;
+  height: auto;
+  margin: 1vh auto;
+  padding: 1vh 1vw;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: #c31432;
+}
+.userPage__header .banner__end {
+  width: 100%;
+  border: none;
+  border-radius: none;
+  padding: 0;
+  margin: 0;
+  height: auto;
+  justify-content: space-between;
+}
+.userPage__header .banner__username {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 2vw;
+}
+.userPage__header .banner__userimage {
+  float: left;
+}
+
 @media screen and (max-width: 500px) {
   .App {
     display: flex;

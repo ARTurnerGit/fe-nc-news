@@ -41,7 +41,7 @@ class UserDetails extends React.Component {
             <label className="banner__username">
               <img
                 src={avatar_url}
-                alt="some sort of avatar"
+                alt="avatar"
                 className="banner__userimage"
               />
               {username}

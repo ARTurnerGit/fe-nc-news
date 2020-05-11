@@ -47,7 +47,7 @@ class Articles extends React.Component {
 
   requestArticlesAndSetState = () => {
     const { sort_by, order, limit, p } = this.state;
-    const { topic_slug: topic, username: author } = this.props;
+    const { topic_slug: topic, author } = this.props;
 
     api.getArticles({ topic, limit: 1000, author }).then(({ articles }) => {
       const total_p = Math.ceil(articles.length / limit);

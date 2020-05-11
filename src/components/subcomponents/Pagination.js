@@ -1,6 +1,6 @@
 import React from "react";
 
-function Pagination({ p, total_p, updatePage, updateLimit }) {
+function Pagination({ p, total_p, limit, updatePage, updateLimit }) {
   return (
     <div className="pagination__container">
       <div>
@@ -14,11 +14,41 @@ function Pagination({ p, total_p, updatePage, updateLimit }) {
       </div>
       <div>
         showing
-        <button onClick={() => updateLimit(1)}>1</button>
-        <button onClick={() => updateLimit(2)}>2</button>
-        <button onClick={() => updateLimit(5)}>5</button>
-        <button onClick={() => updateLimit(10)}>10</button>
-        <button onClick={() => updateLimit(100)}>ALL</button>
+        <button
+          onClick={() => updateLimit(1)}
+          name={1}
+          className={limit === 1 ? "selected" : "normal"}
+        >
+          1
+        </button>
+        <button
+          onClick={() => updateLimit(2)}
+          name={2}
+          className={limit === 2 ? "selected" : "normal"}
+        >
+          2
+        </button>
+        <button
+          onClick={() => updateLimit(5)}
+          name={5}
+          className={limit === 5 ? "selected" : "normal"}
+        >
+          5
+        </button>
+        <button
+          onClick={() => updateLimit(10)}
+          name={10}
+          className={limit === 10 ? "selected" : "normal"}
+        >
+          10
+        </button>
+        <button
+          onClick={() => updateLimit(100)}
+          name={100}
+          className={limit === 100 ? "selected" : "normal"}
+        >
+          ALL
+        </button>
       </div>
     </div>
   );

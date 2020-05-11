@@ -13,7 +13,7 @@ class Articles extends React.Component {
     order: "desc",
     err: "",
     isLoading: true,
-    limit: 100,
+    limit: 5,
     p: 1,
     total_p: 1,
   };
@@ -35,10 +35,12 @@ class Articles extends React.Component {
     if (
       sort_byHasChanged ||
       orderHasChanged ||
-      topicHasChanged ||
       pageHasChanged ||
       limitHasChanged
     ) {
+      this.requestArticlesAndSetState();
+    } else if (topicHasChanged) {
+      this.setState({ p: 1 });
       this.requestArticlesAndSetState();
     }
   }
@@ -82,7 +84,7 @@ class Articles extends React.Component {
   };
 
   render() {
-    const { articles, err, isLoading, p, total_p } = this.state;
+    const { articles, err, isLoading, p, total_p, limit } = this.state;
     const { username, handleNavClick } = this.props;
 
     if (isLoading) return <LoadingMessage />;
@@ -109,6 +111,7 @@ class Articles extends React.Component {
             <Pagination
               p={p}
               total_p={total_p}
+              limit={limit}
               updatePage={this.updatePage}
               updateLimit={this.updateLimit}
             />

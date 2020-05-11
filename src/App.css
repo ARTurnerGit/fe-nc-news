@@ -109,11 +109,27 @@ button:hover {
   width: 60%;
   margin: 1vh auto;
 }
+.main__pagination {
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 1vh auto;
+  width: 30%;
+}
+.main__pagination div {
+  text-align: center;
+  width: 80%;
+  margin: 0.5vh auto;
+  font-style: italic;
+  display: flex;
+  justify-content: space-between;
+}
 
 .article__container--small {
   border: 1px solid black;
   display: grid;
-  height: 15vh;
   grid-template-columns: 4fr 1fr;
   grid-template-rows: 0.5fr 1.2fr 0.5fr;
   grid-template-areas: "info upvote" "title vote_count" "comments downvote";
@@ -124,8 +140,7 @@ button:hover {
 }
 .article__container--small p {
   margin: 0;
-  padding: 0 1vw;
-  white-space: nowrap;
+  padding: 1vh 1vw;
 }
 .article__information--small {
   grid-area: info;

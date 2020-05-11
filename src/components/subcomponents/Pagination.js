@@ -2,7 +2,7 @@ import React from "react";
 
 function Pagination({ p, total_p, updatePage, updateLimit }) {
   return (
-    <>
+    <div className="pagination__container">
       <div>
         <button onClick={() => updatePage(-1)} disabled={p === 1}>
           Previous
@@ -20,7 +20,7 @@ function Pagination({ p, total_p, updatePage, updateLimit }) {
         <button onClick={() => updateLimit(10)}>10</button>
         <button onClick={() => updateLimit(100)}>ALL</button>
       </div>
-    </>
+    </div>
   );
 }
 

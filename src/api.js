@@ -8,10 +8,10 @@ export const getUserByUsername = (username) => {
     });
 };
 
-export const getArticles = ({ sort_by, order, topic, limit, p }) => {
+export const getArticles = ({ sort_by, order, topic, limit, p, author }) => {
   return axios
     .get("https://art-news-server.herokuapp.com/api/articles", {
-      params: { sort_by, order, topic, limit, p },
+      params: { sort_by, order, topic, limit, p, author },
     })
     .then(({ data }) => {
       return data;

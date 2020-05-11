@@ -61,7 +61,10 @@ class App extends React.Component {
               username={username}
               handleNavClick={this.handleNavClick}
             />
-            <UserPage path="/user/:username" />
+            <UserPage
+              path="/user/:username"
+              handleNavClick={this.handleNavClick}
+            />
             <ErrorMessage default />
           </Router>
         </main>

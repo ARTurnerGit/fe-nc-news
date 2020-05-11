@@ -18,9 +18,9 @@ class UserDetails extends React.Component {
       .then(({ name, avatar_url }) => {
         this.setState({ name, avatar_url, isLoading: false, err: "" });
       })
-      .catch((err) =>
-        this.setState({ isLoading: false, err: "User not found" })
-      );
+      .catch((err) => {
+        this.setState({ isLoading: false, err: "User not found" });
+      });
   };
 
   render() {

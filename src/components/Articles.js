@@ -83,7 +83,7 @@ class Articles extends React.Component {
 
   render() {
     const { articles, err, isLoading, p, total_p } = this.state;
-    const { username } = this.props;
+    const { username, handleNavClick } = this.props;
 
     if (isLoading) return <LoadingMessage />;
     else if (err.length !== 0) return <ErrorMessage err={err} />;
@@ -99,6 +99,7 @@ class Articles extends React.Component {
                 <ArticleSmall
                   key={article.article_id}
                   username={username}
+                  handleNavClick={handleNavClick}
                   {...article}
                 />
               );

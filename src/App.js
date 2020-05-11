@@ -9,24 +9,53 @@ import SingleArticle from "./components/SingleArticle";
 import ErrorMessage from "./components/subcomponents/ErrorMessage";
 
 class App extends React.Component {
-  state = { username: "jessjelly" };
+  state = { username: "jessjelly", currentPath: "" };
+
+  componentDidMount() {
+    this.getCurrentPath();
+  }
+
+  handleNavClick = (nextPath) => {
+    this.setState({ currentPath: nextPath });
+  };
+
+  getCurrentPath = () => {
+    this.setState({ currentPath: window.location.pathname });
+  };
+
   render() {
+    console.log(this.state);
+    const { username, currentPath } = this.state;
     return (
       <div className="App">
         <header className="banner__container">
-          <Banner />
-          <UserDetails username={this.state.username} />
+          <Banner
+            handleNavClick={this.handleNavClick}
+            currentPath={currentPath}
+          />
+          <UserDetails username={username} />
         </header>
         <nav className="nav__container">
-          <NavList />
+          <NavList
+            handleNavClick={this.handleNavClick}
+            currentPath={currentPath}
+          />
         </nav>
         <main>
           <Router className="main__container">
-            <Articles path="/" username={this.state.username} />
-            <Articles path="/:topic_slug" username={this.state.username} />
+            <Articles
+              path="/"
+              username={username}
+              handleNavClick={this.handleNavClick}
+            />
+            <Articles
+              path="/:topic_slug"
+              username={username}
+              handleNavClick={this.handleNavClick}
+            />
             <SingleArticle
               path="/:topic_slug/:article_id"
-              username={this.state.username}
+              username={username}
             />
             <ErrorMessage default />
           </Router>

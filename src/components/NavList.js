@@ -15,10 +15,9 @@ class NavList extends React.Component {
     });
   };
 
-  handleClick = () => {};
-
   render() {
     const { topics } = this.state;
+    const { handleNavClick, currentPath } = this.props;
     return (
       <ul className="nav__list">
         Topics
@@ -26,9 +25,12 @@ class NavList extends React.Component {
           return (
             <li key={topic.slug} className="nav__element">
               <Link
-                onClick={this.handleClick}
                 to={`/${topic.slug}`}
-                name={topic.slug}
+                name={`/${topic.slug}`}
+                onClick={() => handleNavClick(topic.slug)}
+                className={
+                  currentPath.includes(topic.slug) ? "selected--nav" : "normal"
+                }
               >
                 {topic.slug}
               </Link>

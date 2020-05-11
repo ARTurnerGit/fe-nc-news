@@ -11,6 +11,7 @@ function ArticleSmall({
   votes,
   comment_count,
   username,
+  handleNavClick,
 }) {
   const createdDate = new Date(Date.parse(created_at));
   const userReadableDate = `${createdDate.getDate()} / ${createdDate.getMonth()} / ${createdDate.getFullYear()}`;
@@ -18,14 +19,28 @@ function ArticleSmall({
   return (
     <div className="article__container--small">
       <p className="article__information--small">
-        <Link to={`/${topic}`}>{topic}</Link>
+        <Link
+          to={`/${topic}`}
+          onClick={() => {
+            handleNavClick(`/${topic}`);
+          }}
+        >
+          {topic}
+        </Link>
         <span>&#8226;</span>
         {author}
         <span>&#8226;</span>
         {userReadableDate}
       </p>
       <p className="article__title--small">
-        <Link to={`/${topic}/${article_id}`}>{title}</Link>
+        <Link
+          to={`/${topic}/${article_id}`}
+          onClick={() => {
+            handleNavClick(`/${topic}/${article_id}`);
+          }}
+        >
+          {title}
+        </Link>
       </p>
       <p className="article__comments--small">{comment_count} comments</p>
       <VotingButtons

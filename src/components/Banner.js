@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 
-function Banner() {
+function Banner({ handleNavClick }) {
   return (
     <>
       <img
@@ -10,7 +10,9 @@ function Banner() {
         alt="the logo for northcoders"
       />
       <h1 className="banner__title">
-        <Link to="/">NC NEWS</Link>
+        <Link to="/" onClick={() => handleNavClick("/")}>
+          NC NEWS
+        </Link>
       </h1>
     </>
   );

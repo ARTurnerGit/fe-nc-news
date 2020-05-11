@@ -24,7 +24,6 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     const { username, currentPath } = this.state;
     return (
       <div className="App">

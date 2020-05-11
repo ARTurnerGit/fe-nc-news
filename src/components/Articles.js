@@ -49,6 +49,11 @@ class Articles extends React.Component {
     const { sort_by, order, limit, p } = this.state;
     const { topic_slug: topic } = this.props;
 
+    api.getArticles({ topic, limit: 1000 }).then(({ articles }) => {
+      const total_p = Math.ceil(articles.length / limit);
+      this.setState({ total_p });
+    });
+
     api
       .getArticles({
         sort_by,
@@ -57,9 +62,8 @@ class Articles extends React.Component {
         limit,
         p,
       })
-      .then(({ articles, total_count }) => {
-        const total_p = Math.ceil(total_count / limit);
-        this.setState({ articles, total_p, isLoading: false, err: "" });
+      .then(({ articles }) => {
+        this.setState({ articles, isLoading: false, err: "" });
       })
       .catch((err) => {
         this.setState({

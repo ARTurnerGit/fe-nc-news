@@ -494,4 +494,5 @@ button:hover {
 
 .selected--nav {
   color: #c31432;
+  text-decoration: underline;
 }
